@@ -40,7 +40,7 @@ message TagFilterField {
     map<string, google.protobuf.Int32Value> values = 2;
 }
 
-message TracingQuery {
+message TracingQueryDefinition {
     TraceQueryTimeRange time_range = 1;
     TraceQueryLatency latency_range = 2;
     repeated MetadataFilter metadata_filters = 3;
@@ -49,4 +49,9 @@ message TracingQuery {
     google.protobuf.StringValue text_filter = 6;
     google.protobuf.Int32Value size = 7;
     google.protobuf.Int32Value filter_size = 8;
+}
+
+message TracingQuery {
+    google.protobuf.StringValue id = 1;
+    TracingQueryDefinition query = 2;
 }
