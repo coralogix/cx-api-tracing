@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+package com.coralogix.tracing.v1;
+
+message Log {
+    google.protobuf.Int64Value timestamp = 1;
+    map<string, google.protobuf.StringValue> fields = 2;
+}
+
+message Span {
+    google.protobuf.StringValue id = 1;
+    google.protobuf.StringValue trace_id = 2;
+    google.protobuf.StringValue operation_name = 3;
+    google.protobuf.StringValue service_name = 4;
+    google.protobuf.Int64Value start_time = 5;
+    google.protobuf.Int64Value duration = 6;
+    google.protobuf.StringValue parent_id = 7;
+    map<string, google.protobuf.StringValue> tags = 8;
+    repeated Log logs = 9;
+}

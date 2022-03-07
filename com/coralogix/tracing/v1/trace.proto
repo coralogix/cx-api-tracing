@@ -1,0 +1,11 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+package com.coralogix.tracing.v1;
+
+message Trace {
+    google.protobuf.Int64Value timestamp = 1;
+    google.protobuf.StringValue root_service = 2;
+    google.protobuf.StringValue root_operation = 3;
+    google.protobuf.Int64Value duration = 4;
+    google.protobuf.BoolValue error = 5;
+}
