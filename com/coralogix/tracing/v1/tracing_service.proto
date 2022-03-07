@@ -45,16 +45,4 @@ service TracingService {
     rpc GetTrace(GetTraceRequest) returns (GetTraceResponse) {
         option (audit_log_description).description = "get trace";
     }
-
-    rpc GetTraces(GetTracesRequest) returns (GetTracesResponse) {
-        option (audit_log_description).description = "get traces";
-    }
-
-    rpc GetCachedTraceQuery(GetCachedTraceQueryRequest) returns (GetCachedTraceQueryResponse) {
-        option (audit_log_description).description = "get cached trace query";
-    }
-
-    rpc GetTraceFilters(GetTraceFiltersRequest) returns (GetTraceFiltersResponse) {
-        option (audit_log_description).description = "get trace filters";
-    }
 }
