@@ -3,9 +3,14 @@ import "google/protobuf/wrappers.proto";
 package com.coralogix.tracing.v1;
 
 message Trace {
-    google.protobuf.Int64Value timestamp = 1;
-    google.protobuf.StringValue root_service = 2;
-    google.protobuf.StringValue root_operation = 3;
+    google.protobuf.StringValue trace_id = 1;
+    google.protobuf.Int32Value number_of_spans = 2;
+    google.protobuf.Int64Value start_time = 3;
     google.protobuf.Int64Value duration = 4;
-    google.protobuf.BoolValue error = 5;
+    google.protobuf.StringValue root_operation_name = 5;
+    google.protobuf.StringValue root_service_name = 6;
+    repeated google.protobuf.StringValue applications = 7;
+    repeated google.protobuf.StringValue subsystems = 8;
+    google.protobuf.Int32Value errors = 9;
+    google.protobuf.BoolValue visible = 10;
 }
