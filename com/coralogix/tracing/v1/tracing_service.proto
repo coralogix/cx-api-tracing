@@ -39,6 +39,8 @@ message GetTraceFiltersRequest {
 message GetTraceFiltersResponse {
     repeated MetadataFilterField metadata_filters = 1;
     repeated TagFilterField tag_filters = 2;
+    repeated google.protobuf.StringValue tags = 3;
+    TraceQueryLatency latency_range = 4;
 }
 
 service TracingService {
