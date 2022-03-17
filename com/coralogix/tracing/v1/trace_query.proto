@@ -20,6 +20,11 @@ enum MetadataFilterFieldName {
     METADATA_FILTER_FIELD_NAME_OPERATION_NAME = 4;
 }
 
+message FilterFieldValue {
+    google.protobuf.StringValue value_name = 1;
+    google.protobuf.Int32Value count = 2;
+}
+
 message MetadataFilter {
     MetadataFilterFieldName metadata_field = 1;
     repeated google.protobuf.StringValue values = 2;
@@ -32,12 +37,12 @@ message TagFilter {
 
 message MetadataFilterField {
     MetadataFilterFieldName metadata_field = 1;
-    map<string, google.protobuf.Int32Value> values = 2;
+    repeated FilterFieldValue values = 2;
 }
 
 message TagFilterField {
     google.protobuf.StringValue tag_name = 1;
-    map<string, google.protobuf.Int32Value> values = 2;
+    repeated FilterFieldValue values = 2;
 }
 
 message TracingQueryDefinition {
