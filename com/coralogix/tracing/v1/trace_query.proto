@@ -1,5 +1,7 @@
 syntax = "proto3";
 import "google/protobuf/wrappers.proto";
+import "com/coralogix/tracing/v1/trace_graph.proto";
+import "com/coralogix/tracing/v1/common.proto";
 package com.coralogix.tracing.v1;
 
 message TraceQueryTimeRange {
@@ -10,14 +12,6 @@ message TraceQueryTimeRange {
 message TraceQueryLatency {
     google.protobuf.Int64Value min = 1;
     google.protobuf.Int64Value max = 2;
-}
-
-enum MetadataFilterFieldName {
-    METADATA_FILTER_FIELD_NAME_UNSPECIFIED = 0;
-    METADATA_FILTER_FIELD_NAME_APPLICATION_NAME = 1;
-    METADATA_FILTER_FIELD_NAME_SUBSYSTEM_NAME = 2;
-    METADATA_FILTER_FIELD_NAME_SERVICE_NAME = 3;
-    METADATA_FILTER_FIELD_NAME_OPERATION_NAME = 4;
 }
 
 message FilterFieldValue {
@@ -45,28 +39,6 @@ message TagFilterField {
     repeated FilterFieldValue values = 2;
 }
 
-enum TraceGraphMetric {
-    TRACE_GRAPH_FIELD_UNSPECIFIED = 0;
-    TRACE_GRAPH_FIELD_TRACE_COUNT = 1;
-    TRACE_GRAPH_FIELD_DURATION = 2;
-}
-
-enum GraphAggregationType {
-    GRAPH_AGGREGATION_TYPE_UNSPECIFIED = 0;
-    GRAPH_AGGREGATION_TYPE_MIN = 1;
-    GRAPH_AGGREGATION_TYPE_MAX = 2;
-    GRAPH_AGGREGATION_TYPE_COUNT = 3;
-    GRAPH_AGGREGATION_TYPE_AVERAGE = 4;
-    GRAPH_AGGREGATION_TYPE_SUM = 5;
-}
-
-message TracingGraph {
-    TraceGraphMetric metric = 1;
-    MetadataFilterField group_by_field = 2;
-    GraphAggregationType aggregation_type = 3;
-    google.protobuf.Int32Value bucketSizeMillis = 4;
-}
-
 message TracingQueryDefinition {
     TraceQueryTimeRange time_range = 1;
     TraceQueryLatency latency_range = 2;
@@ -76,7 +48,7 @@ message TracingQueryDefinition {
     google.protobuf.StringValue text_filter = 6;
     google.protobuf.Int32Value size = 7;
     google.protobuf.Int32Value filter_size = 8;
-    TracingGraph graph = 9;
+    TracingGraphDescriptor graph = 9;
 }
 
 message TracingQuery {

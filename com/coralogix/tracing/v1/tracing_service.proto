@@ -4,6 +4,8 @@ import "com/coralogix/tracing/v1/audit_log.proto";
 import "com/coralogix/tracing/v1/span.proto";
 import "com/coralogix/tracing/v1/trace.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
+import "com/coralogix/tracing/v1/trace_graph.proto";
+
 package com.coralogix.tracing.v1;
 
 message GetTraceRequest {
@@ -43,6 +45,14 @@ message GetTraceFiltersResponse {
     TraceQueryLatency latency_range = 4;
 }
 
+message GetTraceGraphRequest {
+    TracingQuery query = 1;
+}
+
+message GetTraceGraphResponse {
+    TracingGraphResult graph = 1;
+}
+
 service TracingService {
     rpc GetTrace(GetTraceRequest) returns (GetTraceResponse) {
         option (audit_log_description).description = "get trace";
@@ -58,5 +68,9 @@ service TracingService {
 
     rpc GetTraceFilters(GetTraceFiltersRequest) returns (GetTraceFiltersResponse) {
         option (audit_log_description).description = "get trace filters";
+    }
+
+    rpc GetTraceGraph(GetTraceGraphRequest) returns (GetTraceGraphResponse) {
+        option (audit_log_description).description = "get trace graph";
     }
 }
