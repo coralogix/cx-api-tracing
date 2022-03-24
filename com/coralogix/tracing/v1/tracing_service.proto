@@ -41,8 +41,7 @@ message GetTraceFiltersRequest {
 message GetTraceFiltersResponse {
     repeated MetadataFilterField metadata_filters = 1;
     repeated TagFilterField tag_filters = 2;
-    repeated google.protobuf.StringValue tags = 3;
-    TraceQueryLatency latency_range = 4;
+    TraceQueryLatency latency_range = 3;
 }
 
 message GetTraceGraphRequest {
@@ -51,6 +50,14 @@ message GetTraceGraphRequest {
 
 message GetTraceGraphResponse {
     TracingGraphResult graph = 1;
+}
+
+message GetTraceTagsRequest {
+    TraceQueryTimeRange time_range = 1;
+}
+
+message GetTraceTagsResponse {
+    repeated google.protobuf.StringValue tags = 3;
 }
 
 service TracingService {
@@ -72,5 +79,9 @@ service TracingService {
 
     rpc GetTraceGraph(GetTraceGraphRequest) returns (GetTraceGraphResponse) {
         option (audit_log_description).description = "get trace graph";
+    }
+
+    rpc GetTraceTags(GetTraceTagsRequest) returns (GetTraceTagsResponse) {
+        option (audit_log_description).description = "get trace tags";
     }
 }

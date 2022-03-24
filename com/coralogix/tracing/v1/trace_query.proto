@@ -45,11 +45,10 @@ message TracingQueryDefinition {
     repeated MetadataFilter metadata_filters = 3;
     repeated TagFilter tag_filters = 4;
     repeated google.protobuf.Int32Value teams = 5;
-    google.protobuf.StringValue text_filter = 6;
+    google.protobuf.StringValue trace_id = 6;
     google.protobuf.Int32Value size = 7;
     google.protobuf.Int32Value filter_size = 8;
     TracingGraphDescriptor graph = 9;
-    google.protobuf.StringValue trace_id = 10;
 }
 
 message TracingQuery {
