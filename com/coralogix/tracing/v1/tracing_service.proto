@@ -22,8 +22,15 @@ message GetTracesRequest {
 }
 
 message GetTracesResponse {
+    repeated Trace traces = 1;
+}
+
+message GetTraceCountRequest {
+    TracingQuery query = 1;
+}
+
+message GetTraceCountResponse {
     google.protobuf.Int64Value count = 1;
-    repeated Trace traces = 2;
 }
 
 message GetCachedTraceQueryRequest {
@@ -67,6 +74,10 @@ service TracingService {
 
     rpc GetTraces(GetTracesRequest) returns (GetTracesResponse) {
         option (audit_log_description).description = "get traces";
+    }
+
+    rpc GetTraceCount(GetTraceCountRequest) returns (GetTraceCountResponse) {
+        option (audit_log_description).description = "get trace count";
     }
 
     rpc GetCachedTraceQuery(GetCachedTraceQueryRequest) returns (GetCachedTraceQueryResponse) {
