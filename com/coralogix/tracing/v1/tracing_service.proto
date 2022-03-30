@@ -1,0 +1,98 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "com/coralogix/tracing/v1/audit_log.proto";
+import "com/coralogix/tracing/v1/span.proto";
+import "com/coralogix/tracing/v1/trace.proto";
+import "com/coralogix/tracing/v1/trace_query.proto";
+import "com/coralogix/tracing/v1/trace_graph.proto";
+
+package com.coralogix.tracing.v1;
+
+message GetTraceRequest {
+    google.protobuf.StringValue trace_id = 1; // required
+}
+
+message GetTraceResponse {
+    google.protobuf.StringValue trace_id = 1;
+    repeated Span spans = 2;
+}
+
+message GetTracesRequest {
+    TracingQuery query = 1;
+}
+
+message GetTracesResponse {
+    repeated Trace traces = 1;
+}
+
+message GetTraceCountRequest {
+    TracingQuery query = 1;
+}
+
+message GetTraceCountResponse {
+    google.protobuf.Int64Value count = 1;
+}
+
+message GetCachedTraceQueryRequest {
+    google.protobuf.StringValue query_id = 1;
+}
+
+message GetCachedTraceQueryResponse {
+    TracingQueryDefinition query = 1;
+}
+
+message GetTraceFiltersRequest {
+    TracingQuery query = 1;
+}
+
+message GetTraceFiltersResponse {
+    repeated MetadataFilterField metadata_filters = 1;
+    repeated TagFilterField tag_filters = 2;
+    TraceQueryLatency latency_range = 3;
+}
+
+message GetTraceGraphRequest {
+    TracingQuery query = 1;
+}
+
+message GetTraceGraphResponse {
+    TracingGraphResult graph = 1;
+}
+
+message GetTraceTagsRequest {
+    TraceQueryTimeRange time_range = 1;
+}
+
+message GetTraceTagsResponse {
+    repeated google.protobuf.StringValue tags = 3;
+}
+
+service TracingService {
+    rpc GetTrace(GetTraceRequest) returns (GetTraceResponse) {
+        option (audit_log_description).description = "get trace";
+    }
+
+    rpc GetTraces(GetTracesRequest) returns (GetTracesResponse) {
+        option (audit_log_description).description = "get traces";
+    }
+
+    rpc GetTraceCount(GetTraceCountRequest) returns (GetTraceCountResponse) {
+        option (audit_log_description).description = "get trace count";
+    }
+
+    rpc GetCachedTraceQuery(GetCachedTraceQueryRequest) returns (GetCachedTraceQueryResponse) {
+        option (audit_log_description).description = "get cached trace query";
+    }
+
+    rpc GetTraceFilters(GetTraceFiltersRequest) returns (GetTraceFiltersResponse) {
+        option (audit_log_description).description = "get trace filters";
+    }
+
+    rpc GetTraceGraph(GetTraceGraphRequest) returns (GetTraceGraphResponse) {
+        option (audit_log_description).description = "get trace graph";
+    }
+
+    rpc GetTraceTags(GetTraceTagsRequest) returns (GetTraceTagsResponse) {
+        option (audit_log_description).description = "get trace tags";
+    }
+}
