@@ -17,4 +17,5 @@ message Span {
     google.protobuf.StringValue parent_id = 7;
     map<string, google.protobuf.StringValue> tags = 8;
     repeated Log logs = 9;
+    map<string, google.protobuf.StringValue> process_tags = 10;
 }
