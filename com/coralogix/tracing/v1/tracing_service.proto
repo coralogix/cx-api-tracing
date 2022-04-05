@@ -9,7 +9,8 @@ import "com/coralogix/tracing/v1/trace_graph.proto";
 package com.coralogix.tracing.v1;
 
 message GetTraceRequest {
-    google.protobuf.StringValue trace_id = 1; // required
+    google.protobuf.StringValue trace_id = 1;
+    TraceQueryTimeRange time_range = 2;
 }
 
 message GetTraceResponse {
