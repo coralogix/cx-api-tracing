@@ -1,0 +1,32 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "com/coralogix/tracing/v1/audit_log.proto";
+import "com/coralogix/tracing/v1/span.proto";
+import "com/coralogix/tracing/v1/trace.proto";
+import "com/coralogix/tracing/v1/trace_query.proto";
+import "com/coralogix/tracing/v1/trace_graph.proto";
+
+package com.coralogix.tracing.v1;
+
+message GetLogFieldsRequest {}
+
+message GetLogFieldsResponse {
+  repeated  google.protobuf.StringValue span_id_log_fields = 1;
+}
+
+message UpdateLogFieldsRequest {
+  repeated  google.protobuf.StringValue span_id_log_fields = 1;
+}
+
+message UpdateLogFieldsResponse {}
+
+service TracingLogsService {
+  rpc GetLogFields(GetLogFieldsRequest) returns (GetLogFieldsResponse) {
+    option (audit_log_description).description = "get log fields path for span_id/trace_id";
+  }
+
+  rpc UpdateLogFields(UpdateLogFieldsRequest) returns (UpdateLogFieldsResponse) {
+    option (audit_log_description).description = "update log fields path for span_id/trace_id";
+  }
+
+}
