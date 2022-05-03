@@ -13,4 +13,5 @@ message Trace {
     repeated google.protobuf.StringValue subsystems = 8;
     google.protobuf.Int32Value errors = 9;
     map<string, google.protobuf.StringValue> root_tags = 10;
+    map<string, google.protobuf.StringValue> root_process_tags = 11;
 }
