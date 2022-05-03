@@ -8,27 +8,25 @@ import "com/coralogix/tracing/v1/trace_graph.proto";
 
 package com.coralogix.tracing.v1;
 
-message GetFieldsRequest {
+message GetLogFieldsRequest {}
 
-}
-message GetFieldsResponse {
-  repeated  google.protobuf.StringValue fields = 1;
-}
-
-message UpdateFieldsRequest {
-  repeated  google.protobuf.StringValue fields = 1;
+message GetLogFieldsResponse {
+  repeated  google.protobuf.StringValue span_id_log_fields = 1;
 }
 
-message UpdateFieldsResponse {
+message UpdateLogFieldsRequest {
+  repeated  google.protobuf.StringValue span_id_log_fields = 1;
 }
+
+message UpdateLogFieldsResponse {}
 
 service TracingLogsService {
-  rpc GetLogFields(GetFieldsRequest) returns (GetFieldsResponse) {
-    option (audit_log_description).description = "get fields";
+  rpc GetLogFields(GetLogFieldsRequest) returns (GetLogFieldsResponse) {
+    option (audit_log_description).description = "get log fields path for span_id/trace_id";
   }
 
-  rpc UpdateLogFields(UpdateFieldsRequest) returns (UpdateFieldsResponse) {
-    option (audit_log_description).description = "update fields";
+  rpc UpdateLogFields(UpdateLogFieldsRequest) returns (UpdateLogFieldsResponse) {
+    option (audit_log_description).description = "update log fields path for span_id/trace_id";
   }
 
 }
