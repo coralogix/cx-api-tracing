@@ -10,6 +10,7 @@ package com.coralogix.tracing.v1;
 
 message GetTraceRequest {
     google.protobuf.StringValue trace_id = 1; // required
+    google.protobuf.UInt32Value company_id = 2;
 }
 
 message GetTraceResponse {
@@ -61,6 +62,7 @@ message GetTraceGraphResponse {
 
 message GetTraceTagsRequest {
     TraceQueryTimeRange time_range = 1;
+    google.protobuf.UInt32Value company_ids = 2;
 }
 
 message GetTraceTagsResponse {

@@ -15,4 +15,5 @@ message Trace {
     map<string, google.protobuf.StringValue> root_tags = 10;
     google.protobuf.BoolValue visible = 11;
     google.protobuf.BoolValue root_span_visible = 12;
+    google.protobuf.UInt32Value company_id = 13;
 }

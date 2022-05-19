@@ -48,6 +48,7 @@ message TracingQueryDefinition {
     google.protobuf.Int32Value size = 6;
     google.protobuf.Int32Value filter_size = 7;
     TracingGraphDescriptor graph = 8;
+    repeated google.protobuf.UInt32Value company_ids = 9;
 }
 
 message TracingQuery {
