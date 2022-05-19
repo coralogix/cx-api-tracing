@@ -62,7 +62,7 @@ message GetTraceGraphResponse {
 
 message GetTraceTagsRequest {
     TraceQueryTimeRange time_range = 1;
-    google.protobuf.UInt32Value company_ids = 2;
+    repeated google.protobuf.UInt32Value company_ids = 2;
 }
 
 message GetTraceTagsResponse {
