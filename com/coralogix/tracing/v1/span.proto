@@ -19,4 +19,5 @@ message Span {
     repeated Log logs = 9;
     map<string, google.protobuf.StringValue> process_tags = 10;
     google.protobuf.BoolValue visible = 11;
+    google.protobuf.Int32Value company_id = 12;
 }
