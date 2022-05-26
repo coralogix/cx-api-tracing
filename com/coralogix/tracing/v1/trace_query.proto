@@ -53,4 +53,5 @@ message TracingQueryDefinition {
 message TracingQuery {
     google.protobuf.StringValue id = 1;
     TracingQueryDefinition query = 2;
+    google.protobuf.Int32Value saved_view_id = 3;
 }
