@@ -39,6 +39,7 @@ message GetCachedTraceQueryRequest {
 
 message GetCachedTraceQueryResponse {
     TracingQueryDefinition query = 1;
+    google.protobuf.Int32Value saved_view_id = 2;
 }
 
 message GetTraceFiltersRequest {
