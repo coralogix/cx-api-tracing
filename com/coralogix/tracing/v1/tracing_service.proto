@@ -6,6 +6,7 @@ import "com/coralogix/tracing/v1/trace.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
 import "com/coralogix/tracing/v1/trace_graph.proto";
 
+import "google/api/annotations.proto";
 package com.coralogix.tracing.v1;
 
 message GetTraceRequest {
@@ -71,6 +72,9 @@ message GetTraceTagsResponse {
 service TracingService {
     rpc GetTrace(GetTraceRequest) returns (GetTraceResponse) {
         option (audit_log_description).description = "get trace";
+        option (google.api.http) = {
+            post: "/tracing/{trace_id}"
+        };
     }
 
     rpc GetTraces(GetTracesRequest) returns (GetTracesResponse) {
