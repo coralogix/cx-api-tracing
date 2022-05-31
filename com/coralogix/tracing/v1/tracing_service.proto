@@ -10,7 +10,7 @@ package com.coralogix.tracing.v1;
 
 message GetTraceRequest {
     google.protobuf.StringValue trace_id = 1; // required
-    repeated google.protobuf.Int32Value team_id = 2;
+    google.protobuf.Int32Value team_id = 2;
 }
 
 message GetTraceResponse {
