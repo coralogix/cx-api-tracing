@@ -1,0 +1,65 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "com/coralogix/tracing/v1/common.proto";
+package com.coralogix.tracing.v1;
+
+enum TraceGraphMetric {
+    TRACE_GRAPH_METRIC_FIELD_UNSPECIFIED = 0;
+    TRACE_GRAPH_METRIC_FIELD_DURATION = 1;
+}
+
+enum MetricAggregationType {
+    METRIC_AGGREGATION_TYPE_UNSPECIFIED = 0;
+    METRIC_AGGREGATION_TYPE_MIN = 1;
+    METRIC_AGGREGATION_TYPE_MAX = 2;
+    METRIC_AGGREGATION_TYPE_AVERAGE = 3;
+    METRIC_AGGREGATION_TYPE_SUM = 4;
+}
+
+message MetricAggregation {
+    TraceGraphMetric metric = 1;
+    MetricAggregationType aggregation_type = 2;
+}
+
+enum TraceGraphDimension {
+    TRACE_GRAPH_DIMENSION_UNSPECIFIED = 0;
+    TRACE_GRAPH_DIMENSION_TRACE_ID = 1;
+}
+
+enum DimensionAggregationType {
+    DIMENSION_AGGREGATION_TYPE_UNSPECIFIED = 0;
+    DIMENSION_AGGREGATION_TYPE_UNIQUE_COUNT = 1;
+}
+
+message DimensionAggregation {
+    TraceGraphDimension dimension = 1;
+    DimensionAggregationType aggregation_type = 2;
+}
+
+message TracingGraphDescriptor {
+    oneof aggregation {
+        MetricAggregation metric_aggregation = 1;
+        DimensionAggregation dimension_aggregation = 2;
+    }
+
+    oneof group_by_field {
+        MetadataFilterFieldName metadata_field = 3;
+        google.protobuf.StringValue tag_name = 4;
+    }
+
+    google.protobuf.Int32Value bucket_size_millis = 5;
+}
+
+message GraphPoint {
+    google.protobuf.Int64Value timestamp = 1;
+    google.protobuf.Int32Value value = 2;
+}
+
+message TimeSeries {
+    google.protobuf.StringValue key = 1;
+    repeated GraphPoint data = 2;
+}
+
+message TracingGraphResult {
+    repeated TimeSeries series = 1;
+}
