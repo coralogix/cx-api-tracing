@@ -51,6 +51,7 @@ message GetTraceFiltersResponse {
     repeated MetadataFilterField metadata_filters = 1;
     repeated TagFilterField tag_filters = 2;
     TraceQueryLatency latency_range = 3;
+    repeated FilterFieldValue teams = 4;
 }
 
 message GetTraceGraphRequest {
