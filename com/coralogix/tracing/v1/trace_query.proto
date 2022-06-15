@@ -47,7 +47,7 @@ message TracingQueryDefinition {
     google.protobuf.StringValue trace_id = 5;
     google.protobuf.Int32Value size = 6;
     google.protobuf.Int32Value filter_size = 7;
-    repeated TracingGraphDescriptor graph = 8;
+    repeated TracingGraphDescriptor graphs = 8;
 }
 
 message TracingQuery {
