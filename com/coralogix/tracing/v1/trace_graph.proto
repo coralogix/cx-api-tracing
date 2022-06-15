@@ -32,6 +32,7 @@ enum TraceGraphDimension {
 enum DimensionAggregationType {
     DIMENSION_AGGREGATION_TYPE_UNSPECIFIED = 0;
     DIMENSION_AGGREGATION_TYPE_UNIQUE_COUNT = 1;
+    DIMENSION_AGGREGATION_TYPE_ERROR_COUNT = 2;
 }
 
 message DimensionAggregation {
