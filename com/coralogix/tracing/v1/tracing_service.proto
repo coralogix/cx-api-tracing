@@ -10,6 +10,7 @@ package com.coralogix.tracing.v1;
 
 message GetTraceRequest {
     google.protobuf.StringValue trace_id = 1; // required
+    google.protobuf.Int32Value team_id = 2;
 }
 
 message GetTraceResponse {
@@ -50,6 +51,7 @@ message GetTraceFiltersResponse {
     repeated MetadataFilterField metadata_filters = 1;
     repeated TagFilterField tag_filters = 2;
     TraceQueryLatency latency_range = 3;
+    repeated FilterFieldValue teams = 4;
 }
 
 message GetTraceGraphRequest {
@@ -64,6 +66,7 @@ message GetTraceGraphResponse {
 
 message GetTraceTagsRequest {
     TraceQueryTimeRange time_range = 1;
+    repeated google.protobuf.UInt32Value teams = 2;
 }
 
 message GetTraceTagsResponse {
