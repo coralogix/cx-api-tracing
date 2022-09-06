@@ -73,6 +73,15 @@ message GetTraceTagsResponse {
     repeated google.protobuf.StringValue tags = 3;
 }
 
+message GetTraceProcessTagsRequest {
+    TraceQueryTimeRange time_range = 1;
+    repeated google.protobuf.UInt32Value teams = 2;
+}
+
+message GetTraceProcessTagsResponse {
+    repeated google.protobuf.StringValue tags = 3;
+}
+
 service TracingService {
     rpc GetTrace(GetTraceRequest) returns (GetTraceResponse) {
         option (audit_log_description).description = "get trace";
@@ -100,5 +109,9 @@ service TracingService {
 
     rpc GetTraceTags(GetTraceTagsRequest) returns (GetTraceTagsResponse) {
         option (audit_log_description).description = "get trace tags";
+    }
+
+    rpc GetTraceProcessTags(GetTraceProcessTagsRequest) returns (GetTraceProcessTagsResponse) {
+        option (audit_log_description).description = "get trace process tags";
     }
 }
