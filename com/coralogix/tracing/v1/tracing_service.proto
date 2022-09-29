@@ -56,12 +56,12 @@ message GetTraceFiltersResponse {
 
 message GetTraceGraphRequest {
     TracingQuery query = 1;
-    google.protobuf.Int32Value graphId = 2;
+    google.protobuf.Int32Value graph_id = 2;
 }
 
 message GetTraceGraphResponse {
     TracingGraphResult graph = 1;
-    google.protobuf.Int64Value graphId = 2;
+    google.protobuf.Int64Value graph_id = 2;
 }
 
 message GetTraceTagsRequest {
