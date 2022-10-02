@@ -16,4 +16,5 @@ message Trace {
     google.protobuf.BoolValue visible = 11;
     google.protobuf.BoolValue root_span_visible = 12;
     google.protobuf.Int32Value company_id = 13;
+    google.protobuf.BoolValue too_many_spans = 14;
 }
