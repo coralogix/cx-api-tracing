@@ -14,6 +14,12 @@ message TraceQueryLatency {
     google.protobuf.Int64Value max = 2;
 }
 
+message TraceQueryLatencyPercentile {
+    google.protobuf.BoolValue p_50 = 1;
+    google.protobuf.BoolValue p_95 = 2;
+    google.protobuf.BoolValue p_99 = 3;
+}
+
 message FilterFieldValue {
     google.protobuf.StringValue value_name = 1;
     google.protobuf.Int32Value count = 2;
@@ -49,6 +55,7 @@ message TracingQueryDefinition {
     google.protobuf.Int32Value filter_size = 7;
     repeated TracingGraphDescriptor graphs = 8;
     repeated google.protobuf.UInt32Value teams = 9;
+    TraceQueryLatencyPercentile latency_percentile = 10;
 }
 
 message TracingQuery {
