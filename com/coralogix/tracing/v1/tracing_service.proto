@@ -52,7 +52,7 @@ message GetTraceFiltersResponse {
     repeated TagFilterField tag_filters = 2;
     TraceQueryLatency latency_range = 3;
     repeated FilterFieldValue teams = 4;
-    LatencyAggregationType aggregation_type = 5;
+    LatencyPercentileAggregationType aggregation_type = 5;
 }
 
 message GetTraceGraphRequest {
