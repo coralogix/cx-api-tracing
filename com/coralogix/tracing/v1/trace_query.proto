@@ -5,9 +5,9 @@ import "com/coralogix/tracing/v1/common.proto";
 package com.coralogix.tracing.v1;
 
 enum LatencyAggregationType {
-    LATENCY_AGGREGATION_TYPE_PERCENTILE_50 = 0;
-    LATENCY_AGGREGATION_TYPE_PERCENTILE_90 = 1;
-    LATENCY_AGGREGATION_TYPE_PERCENTILE_95 = 2;
+  LATENCY_AGGREGATION_TYPE_PERCENTILE_95 = 0;
+  LATENCY_AGGREGATION_TYPE_PERCENTILE_90 = 1;
+  LATENCY_AGGREGATION_TYPE_PERCENTILE_50 = 2;
 }
 
 message TraceQueryTimeRange {
