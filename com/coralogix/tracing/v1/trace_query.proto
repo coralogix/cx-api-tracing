@@ -4,6 +4,12 @@ import "com/coralogix/tracing/v1/trace_graph.proto";
 import "com/coralogix/tracing/v1/common.proto";
 package com.coralogix.tracing.v1;
 
+enum LatencyAggregationType {
+    LATENCY_AGGREGATION_TYPE_PERCENTILE_50 = 0;
+    LATENCY_AGGREGATION_TYPE_PERCENTILE_90 = 1;
+    LATENCY_AGGREGATION_TYPE_PERCENTILE_95 = 2;
+}
+
 message TraceQueryTimeRange {
     google.protobuf.Int64Value start = 1;
     google.protobuf.Int64Value end = 2;
@@ -13,6 +19,7 @@ message TraceQueryLatency {
     google.protobuf.Int64Value min = 1;
     google.protobuf.Int64Value max = 2;
 }
+
 
 message FilterFieldValue {
     google.protobuf.StringValue value_name = 1;
@@ -49,6 +56,7 @@ message TracingQueryDefinition {
     google.protobuf.Int32Value filter_size = 7;
     repeated TracingGraphDescriptor graphs = 8;
     repeated google.protobuf.UInt32Value teams = 9;
+    LatencyAggregationType aggregation_type = 10;
 }
 
 message TracingQuery {
