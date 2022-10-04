@@ -4,11 +4,11 @@ import "com/coralogix/tracing/v1/trace_graph.proto";
 import "com/coralogix/tracing/v1/common.proto";
 package com.coralogix.tracing.v1;
 
-enum LatencyPercentileAggregationType {
-    LATENCY_AGGREGATION_TYPE_PERCENTILE_UNSPECIFIED = 0;
-    LATENCY_AGGREGATION_TYPE_PERCENTILE_50 = 1;
-    LATENCY_AGGREGATION_TYPE_PERCENTILE_95 = 2;
-    LATENCY_AGGREGATION_TYPE_PERCENTILE_99 = 3;
+enum LatencyPercentileType {
+    LATENCY_PERCENTILE_TYPE_UNSPECIFIED = 0;
+    LATENCY_PERCENTILE_TYPE_50 = 1;
+    LATENCY_PERCENTILE_TYPE_95 = 2;
+    LATENCY_PERCENTILE_TYPE_99 = 3;
 }
 
 message TraceQueryTimeRange {
@@ -57,7 +57,7 @@ message TracingQueryDefinition {
     google.protobuf.Int32Value filter_size = 7;
     repeated TracingGraphDescriptor graphs = 8;
     repeated google.protobuf.UInt32Value teams = 9;
-    LatencyPercentileAggregationType aggregation_type = 10;
+    LatencyPercentileType aggregation_type = 10;
 }
 
 message TracingQuery {
