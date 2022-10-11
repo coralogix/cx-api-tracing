@@ -116,7 +116,7 @@ service TracingService {
         option (audit_log_description).description = "get trace process tags";
     }
 
-    rpc GetTraceDurationLatency(GetTraceRequest) returns (GetTraceResponse) {
-        option (audit_log_description).description = "get trace LATENCY";
+    rpc GetTraceDurationLatency(GetTraceFiltersRequest) returns (GetTraceFiltersResponse) {
+        option (audit_log_description).description = "get trace latency";
     }
 }
