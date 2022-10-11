@@ -47,12 +47,20 @@ message GetTraceFiltersRequest {
     TracingQuery query = 1;
 }
 
+message GetTraceLatencyRequest {
+    TracingQuery query = 1;
+}
+
 message GetTraceFiltersResponse {
     repeated MetadataFilterField metadata_filters = 1;
     repeated TagFilterField tag_filters = 2;
     TraceQueryLatency latency_range = 3;
     repeated FilterFieldValue teams = 4;
     LatencyPercentileType latency_percentile = 5;
+}
+
+message GetTraceLatencyResponse {
+    TraceQueryLatencyPercentile latency_percentile = 1;
 }
 
 message GetTraceGraphRequest {
@@ -116,7 +124,7 @@ service TracingService {
         option (audit_log_description).description = "get trace process tags";
     }
 
-    rpc GetTraceDurationLatency(GetTraceFiltersRequest) returns (GetTraceFiltersResponse) {
+    rpc GetTraceDurationLatency(GetTraceLatencyRequest) returns (GetTraceLatencyResponse) {
         option (audit_log_description).description = "get trace latency";
     }
 }

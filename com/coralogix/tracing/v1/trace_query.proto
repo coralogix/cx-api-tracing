@@ -21,6 +21,10 @@ message TraceQueryLatency {
     google.protobuf.Int64Value max = 2;
 }
 
+message TraceQueryLatencyPercentile {
+    google.protobuf.StringValue value = 1;
+}
+
 
 message FilterFieldValue {
     google.protobuf.StringValue value_name = 1;
