@@ -23,7 +23,7 @@ message TraceQueryLatency {
 
 message TraceQueryLatencyPercentile {
     LatencyPercentileType type = 1;
-    google.protobuf.StringValue percentile_value = 2;
+    google.protobuf.Int64Value percentile_value = 2;
 }
 
 
