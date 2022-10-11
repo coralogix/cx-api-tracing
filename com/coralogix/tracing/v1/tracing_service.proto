@@ -117,6 +117,6 @@ service TracingService {
     }
 
     rpc GetTraceDurationLatency(GetTraceRequest) returns (GetTraceResponse) {
-        option (audit_log_description).description = "get trace";
+        option (audit_log_description).description = "get trace LATENCY";
     }
 }
