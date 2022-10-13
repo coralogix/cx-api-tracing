@@ -47,7 +47,7 @@ message GetTraceFiltersRequest {
     TracingQuery query = 1;
 }
 
-message GetTraceLatencyRequest {
+message GetTraceLatencyPercentileRequest {
     TracingQuery query = 1;
 }
 
@@ -59,7 +59,7 @@ message GetTraceFiltersResponse {
     LatencyPercentileType latency_percentile = 5;
 }
 
-message GetTraceLatencyResponse {
+message GetTraceLatencyPercentileResponse {
     TraceQueryLatencyPercentile latency_percentile = 1;
 }
 
@@ -124,7 +124,7 @@ service TracingService {
         option (audit_log_description).description = "get trace process tags";
     }
 
-    rpc GetTraceDurationLatency(GetTraceLatencyRequest) returns (GetTraceLatencyResponse) {
+    rpc GetTraceLatencyPercentile(GetTraceLatencyPercentileRequest) returns (GetTraceLatencyPercentileResponse) {
         option (audit_log_description).description = "get trace latency";
     }
 }
