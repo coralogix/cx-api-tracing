@@ -57,6 +57,8 @@ message GetTraceFiltersResponse {
     TraceQueryLatency latency_range = 3;
     repeated FilterFieldValue teams = 4;
     LatencyPercentileType latency_percentile = 5;
+    repeated TagFilterField process_tag_filters = 6;
+
 }
 
 message GetTraceLatencyPercentileResponse {
