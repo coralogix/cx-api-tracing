@@ -1,0 +1,34 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "com/coralogix/tracing/v1/audit_log.proto";
+import "com/coralogix/tracing/v1/trace_query.proto";
+
+package com.coralogix.tracing.v1;
+
+message GetTraceTagsInternalRequest {
+    TraceQueryTimeRange time_range = 1;
+    repeated google.protobuf.UInt32Value teams = 2;
+}
+
+message GetTraceTagsInternalResponse {
+    repeated google.protobuf.StringValue tags = 3;
+}
+
+message GetTraceProcessTagsInternalRequest {
+    TraceQueryTimeRange time_range = 1;
+    repeated google.protobuf.UInt32Value teams = 2;
+}
+
+message GetTraceProcessTagsInternalResponse {
+    repeated google.protobuf.StringValue tags = 3;
+}
+
+service TracingInternalService {
+    rpc GetTraceTagsInternal(GetTraceTagsInternalRequest) returns (GetTraceTagsInternalResponse) {
+        option (audit_log_description).description = "get trace tags internal";
+    }
+
+    rpc GetTraceProcessTagsInternal(GetTraceProcessTagsInternalRequest) returns (GetTraceProcessTagsInternalResponse) {
+        option (audit_log_description).description = "get trace process tags internal";
+    }
+}
