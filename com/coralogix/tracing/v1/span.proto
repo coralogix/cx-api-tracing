@@ -20,4 +20,6 @@ message Span {
     map<string, google.protobuf.StringValue> process_tags = 10;
     google.protobuf.BoolValue visible = 11;
     google.protobuf.Int32Value company_id = 12;
+    google.protobuf.StringValue application_name = 13;
+    google.protobuf.StringValue subsystem_name = 14;
 }
