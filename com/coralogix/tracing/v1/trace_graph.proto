@@ -49,10 +49,10 @@ message TracingGraphDescriptor {
     oneof group_by_field {
         MetadataFilterFieldName metadata_field = 3;
         google.protobuf.StringValue tag_name = 4;
-        google.protobuf.StringValue process_tag = 5;
+        google.protobuf.StringValue process_tag = 6;
     }
 
-    google.protobuf.Int32Value bucket_size_millis = 6;
+    google.protobuf.Int32Value bucket_size_millis = 5;
 }
 
 message GraphPoint {
