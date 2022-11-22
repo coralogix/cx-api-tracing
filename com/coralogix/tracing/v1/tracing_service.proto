@@ -11,6 +11,7 @@ package com.coralogix.tracing.v1;
 message GetTraceRequest {
     google.protobuf.StringValue trace_id = 1; // required
     google.protobuf.Int32Value team_id = 2;
+    TraceQueryTimeRange time_range = 3;
 }
 
 message GetTraceResponse {
