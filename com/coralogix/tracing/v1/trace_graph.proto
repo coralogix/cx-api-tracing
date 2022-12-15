@@ -52,7 +52,8 @@ message TracingGraphDescriptor {
         google.protobuf.StringValue process_tag = 6;
     }
 
-    google.protobuf.Int32Value bucket_size_millis = 5;
+    google.protobuf.Int32Value bucket_size_millis = 5 [deprecated=true];;
+    google.protobuf.Int32Value number_of_data_points = 7;
 }
 
 message GraphPoint {
