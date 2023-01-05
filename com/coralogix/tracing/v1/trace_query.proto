@@ -64,6 +64,7 @@ message TracingQueryDefinition {
     repeated google.protobuf.UInt32Value teams = 9;
     LatencyPercentileType latency_percentile = 10;
     repeated TagFilter process_tag_filters = 11;
+    google.protobuf.StringValue lucene_query = 12;
 }
 
 message TracingQuery {
