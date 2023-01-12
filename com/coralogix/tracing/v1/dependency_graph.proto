@@ -1,0 +1,23 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+package com.coralogix.tracing.v1;
+
+message ServiceNode {
+  google.protobuf.StringValue name = 1;
+  google.protobuf.Int64Value total_requests = 2;
+  google.protobuf.Int64Value total_errors = 3;
+  map<string, google.protobuf.StringValue> tags = 4;
+  map<string, google.protobuf.StringValue> process_tags = 5;
+}
+
+message ServiceConnection {
+  google.protobuf.StringValue dest_node_id = 1;
+  google.protobuf.Int64Value total_requests = 2;
+  google.protobuf.Int64Value total_errors = 3;
+  google.protobuf.DoubleValue p99_duration = 4;
+}
+
+message TracesDependencyGraph {
+  repeated ServiceNode nodes = 1;
+  repeated ServiceConnection edges = 2;
+}

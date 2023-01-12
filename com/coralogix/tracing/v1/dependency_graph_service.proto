@@ -1,0 +1,18 @@
+syntax = "proto3";
+import "com/coralogix/tracing/v1/audit_log.proto";
+import "com/coralogix/tracing/v1/dependency_graph.proto";
+package com.coralogix.tracing.v1;
+
+message GetGraphRequest {
+
+}
+
+message GetGraphResponse {
+  TracesDependencyGraph dependency_graph = 1;
+}
+
+service DependencyGraphService {
+  rpc GetGraph(GetGraphRequest) returns (GetGraphResponse)  {
+    option (audit_log_description).description = "get dependency graph";
+  }
+}
