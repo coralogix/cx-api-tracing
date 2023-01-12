@@ -1,10 +1,12 @@
 syntax = "proto3";
 import "com/coralogix/tracing/v1/audit_log.proto";
 import "com/coralogix/tracing/v1/dependency_graph.proto";
+
+import "com/coralogix/tracing/v1/trace_query.proto";
 package com.coralogix.tracing.v1;
 
 message GetGraphRequest {
-
+    TraceQueryTimeRange time_range = 1;
 }
 
 message GetGraphResponse {
