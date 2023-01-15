@@ -18,7 +18,7 @@ message ServiceConnection {
   google.protobuf.DoubleValue p99_duration = 5;
 }
 
-message TracesDependencyGraph {
+message TracesDependenciesGraph {
   repeated ServiceNode nodes = 1;
   repeated ServiceConnection edges = 2;
 }
