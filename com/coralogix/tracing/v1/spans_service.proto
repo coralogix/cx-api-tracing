@@ -1,0 +1,24 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "com/coralogix/tracing/v1/audit_log.proto";
+import "com/coralogix/tracing/v1/span.proto";
+import "com/coralogix/tracing/v1/trace.proto";
+import "com/coralogix/tracing/v1/span_query.proto";
+import "com/coralogix/tracing/v1/trace_graph.proto";
+
+package com.coralogix.tracing.v1;
+
+message GetSpanRequest {
+  google.protobuf.StringValue span_id = 1; // required
+  google.protobuf.Int32Value team_id = 2;
+  SpanQueryTimeRange time_range = 3;
+}
+
+message GetSpanResponse {
+  Span span = 1;
+}
+
+message GetSpansRequest {
+  TracingQuery query = 1;
+}
+
