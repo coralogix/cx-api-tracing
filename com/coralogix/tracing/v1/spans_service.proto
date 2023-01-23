@@ -95,39 +95,39 @@ message GetSpanProcessTagsResponse {
 }
 
 service SpanService {
-  rpc GetTrace(GetSpanRequest) returns (GetSpanResponse) {
+  rpc GetSpan(GetSpanRequest) returns (GetSpanResponse) {
     option (audit_log_description).description = "get span";
   }
 
-  rpc GetTraces(GetSpansRequest) returns (GetSpansResponse) {
+  rpc GetSpans(GetSpansRequest) returns (GetSpansResponse) {
     option (audit_log_description).description = "get spans";
   }
 
-  rpc GetTraceCount(GetSpanCountRequest) returns (GetSpanCountResponse) {
+  rpc GetSpanCount(GetSpanCountRequest) returns (GetSpanCountResponse) {
     option (audit_log_description).description = "get span count";
   }
 
-  rpc GetCachedTraceQuery(GetCachedSpanQueryRequest) returns (GetCachedSpanQueryResponse) {
+  rpc GetCachedSpanQuery(GetCachedSpanQueryRequest) returns (GetCachedSpanQueryResponse) {
     option (audit_log_description).description = "get cached span query";
   }
 
-  rpc GetTraceFilters(GetSpanFiltersRequest) returns (GetSpanFiltersResponse) {
+  rpc GetSpanFilters(GetSpanFiltersRequest) returns (GetSpanFiltersResponse) {
     option (audit_log_description).description = "get span filters";
   }
 
-  rpc GetTraceGraph(GetSpanGraphRequest) returns (GetSpanGraphResponse) {
+  rpc GetSpanGraph(GetSpanGraphRequest) returns (GetSpanGraphResponse) {
     option (audit_log_description).description = "get span graph";
   }
 
-  rpc GetTraceTags(GetSpanTagsRequest) returns (GetSpanTagsResponse) {
+  rpc GetSpanTags(GetSpanTagsRequest) returns (GetSpanTagsResponse) {
     option (audit_log_description).description = "get span tags";
   }
 
-  rpc GetTraceProcessTags(GetSpanProcessTagsRequest) returns (GetSpanProcessTagsResponse) {
+  rpc GetSpanProcessTags(GetSpanProcessTagsRequest) returns (GetSpanProcessTagsResponse) {
     option (audit_log_description).description = "get span process tags";
   }
 
-  rpc GetTraceLatencyPercentile(GetSpanLatencyPercentileRequest) returns (GetSpanLatencyPercentileResponse) {
+  rpc GetSpanLatencyPercentile(GetSpanLatencyPercentileRequest) returns (GetSpanLatencyPercentileResponse) {
     option (audit_log_description).description = "get span latency";
   }
 }
