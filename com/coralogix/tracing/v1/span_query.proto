@@ -2,6 +2,7 @@ syntax = "proto3";
 import "google/protobuf/wrappers.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
 import "com/coralogix/tracing/v1/common.proto";
+import "com/coralogix/tracing/v1/trace_graph.proto";
 
 package com.coralogix.tracing.v1;
 
@@ -29,10 +30,11 @@ message SpanQueryDefinition {
   repeated google.protobuf.StringValue trace_id = 5;
   google.protobuf.Int32Value size = 6;
   google.protobuf.Int32Value filter_size = 7;
-  repeated google.protobuf.UInt32Value teams = 8;
-  LatencyPercentileType latency_percentile = 9;
-  repeated TagFilter process_tag_filters = 10;
-  google.protobuf.StringValue lucene_query = 11;
+  repeated TraceGraphDimension graphs = 8;
+  repeated google.protobuf.UInt32Value teams = 9;
+  LatencyPercentileType latency_percentile = 10;
+  repeated TagFilter process_tag_filters = 11;
+  google.protobuf.StringValue lucene_query = 12;
 }
 
 message SpanQuery {
