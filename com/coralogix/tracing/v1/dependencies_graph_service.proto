@@ -1,7 +1,6 @@
 syntax = "proto3";
 import "com/coralogix/tracing/v1/audit_log.proto";
 import "com/coralogix/tracing/v1/dependencies_graph.proto";
-
 import "com/coralogix/tracing/v1/trace_query.proto";
 package com.coralogix.tracing.v1;
 
