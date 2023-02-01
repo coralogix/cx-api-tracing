@@ -4,7 +4,6 @@ import "com/coralogix/tracing/v1/audit_log.proto";
 import "com/coralogix/tracing/v1/span.proto";
 import "com/coralogix/tracing/v1/trace.proto";
 import "com/coralogix/tracing/v1/span_query.proto";
-import "com/coralogix/tracing/v1/span_graph.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
 import "com/coralogix/tracing/v1/trace_graph.proto";
 
@@ -36,20 +35,7 @@ message GetSpanCountResponse {
   google.protobuf.Int64Value count = 1;
 }
 
-message GetCachedSpanQueryRequest {
-  google.protobuf.StringValue query_id = 1;
-}
-
-message GetCachedSpanQueryResponse {
-  SpanQueryDefinition query = 1;
-  google.protobuf.Int32Value saved_view_id = 2;
-}
-
 message GetSpanFiltersRequest {
-  SpanQuery query = 1;
-}
-
-message GetSpanLatencyPercentileRequest {
   SpanQuery query = 1;
 }
 
@@ -60,38 +46,6 @@ message GetSpanFiltersResponse {
   repeated FilterFieldValue teams = 4;
   LatencyPercentileType latency_percentile = 5;
   repeated TagFilterField process_tag_filters = 6;
-}
-
-message GetSpanLatencyPercentileResponse {
-  SpanQueryLatencyPercentile latency_percentile = 1;
-}
-
-message GetSpanGraphRequest {
-  SpanQuery query = 1;
-  google.protobuf.Int32Value graph_id = 2;
-}
-
-message GetSpanGraphResponse {
-  SpanGraphResult graph = 1;
-  google.protobuf.Int64Value graph_id = 2;
-}
-
-message GetSpanTagsRequest {
-  SpanQueryTimeRange time_range = 1;
-  repeated google.protobuf.UInt32Value teams = 2;
-}
-
-message GetSpanTagsResponse {
-  repeated google.protobuf.StringValue tags = 3;
-}
-
-message GetSpanProcessTagsRequest {
-  SpanQueryTimeRange time_range = 1;
-  repeated google.protobuf.UInt32Value teams = 2;
-}
-
-message GetSpanProcessTagsResponse {
-  repeated google.protobuf.StringValue tags = 3;
 }
 
 service SpanService {
@@ -107,28 +61,12 @@ service SpanService {
     option (audit_log_description).description = "get span count";
   }
 
-  rpc GetCachedSpanQuery(GetCachedSpanQueryRequest) returns (GetCachedSpanQueryResponse) {
-    option (audit_log_description).description = "get cached span query";
-  }
-
   rpc GetSpanFilters(GetSpanFiltersRequest) returns (GetSpanFiltersResponse) {
     option (audit_log_description).description = "get span filters";
   }
 
   rpc GetSpanGraph(GetSpanGraphRequest) returns (GetSpanGraphResponse) {
     option (audit_log_description).description = "get span graph";
-  }
-
-  rpc GetSpanTags(GetSpanTagsRequest) returns (GetSpanTagsResponse) {
-    option (audit_log_description).description = "get span tags";
-  }
-
-  rpc GetSpanProcessTags(GetSpanProcessTagsRequest) returns (GetSpanProcessTagsResponse) {
-    option (audit_log_description).description = "get span process tags";
-  }
-
-  rpc GetSpanLatencyPercentile(GetSpanLatencyPercentileRequest) returns (GetSpanLatencyPercentileResponse) {
-    option (audit_log_description).description = "get span latency";
   }
 }
 
