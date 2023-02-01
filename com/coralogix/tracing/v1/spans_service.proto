@@ -64,9 +64,5 @@ service SpanService {
   rpc GetSpanFilters(GetSpanFiltersRequest) returns (GetSpanFiltersResponse) {
     option (audit_log_description).description = "get span filters";
   }
-
-  rpc GetSpanGraph(GetSpanGraphRequest) returns (GetSpanGraphResponse) {
-    option (audit_log_description).description = "get span graph";
-  }
 }
 
