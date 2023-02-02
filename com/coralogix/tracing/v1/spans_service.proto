@@ -1,0 +1,66 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "com/coralogix/tracing/v1/audit_log.proto";
+import "com/coralogix/tracing/v1/span.proto";
+import "com/coralogix/tracing/v1/span_query.proto";
+import "com/coralogix/tracing/v1/trace_query.proto";
+
+package com.coralogix.tracing.v1;
+
+message GetSpanRequest {
+  google.protobuf.StringValue span_id = 1;
+  google.protobuf.Int32Value team_id = 2;
+  SpanQueryTimeRange time_range = 3;
+}
+
+message GetSpanResponse {
+  repeated Span spans = 1;
+}
+
+message GetSpansRequest {
+  SpanQuery query = 1;
+}
+
+message GetSpansResponse {
+  repeated Span spans = 1;
+}
+
+message GetSpanCountRequest {
+  SpanQuery query = 1;
+}
+
+message GetSpanCountResponse {
+  google.protobuf.Int64Value count = 1;
+}
+
+message GetSpanFiltersRequest {
+  SpanQuery query = 1;
+}
+
+message GetSpanFiltersResponse {
+  repeated MetadataFilterField metadata_filters = 1;
+  repeated TagFilterField tag_filters = 2;
+  SpanQueryLatency latency_range = 3;
+  repeated FilterFieldValue teams = 4;
+  LatencyPercentileType latency_percentile = 5;
+  repeated TagFilterField process_tag_filters = 6;
+}
+
+service SpanService {
+  rpc GetSpan(GetSpanRequest) returns (GetSpanResponse) {
+    option (audit_log_description).description = "get span";
+  }
+
+  rpc GetSpans(GetSpansRequest) returns (GetSpansResponse) {
+    option (audit_log_description).description = "get spans";
+  }
+
+  rpc GetSpanCount(GetSpanCountRequest) returns (GetSpanCountResponse) {
+    option (audit_log_description).description = "get span count";
+  }
+
+  rpc GetSpanFilters(GetSpanFiltersRequest) returns (GetSpanFiltersResponse) {
+    option (audit_log_description).description = "get span filters";
+  }
+}
+
