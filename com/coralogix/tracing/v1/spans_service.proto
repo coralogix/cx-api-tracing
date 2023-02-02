@@ -8,7 +8,7 @@ import "com/coralogix/tracing/v1/trace_query.proto";
 package com.coralogix.tracing.v1;
 
 message GetSpanRequest {
-  google.protobuf.StringValue span_id = 1; // required
+  google.protobuf.StringValue span_id = 1;
   google.protobuf.Int32Value team_id = 2;
   SpanQueryTimeRange time_range = 3;
 }
