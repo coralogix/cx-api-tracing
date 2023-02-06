@@ -14,7 +14,7 @@ message GetSpanRequest {
 }
 
 message GetSpanResponse {
-    Span spans = 1;
+    repeated  Span spans = 1;
 }
 
 message GetSpansRequest {
