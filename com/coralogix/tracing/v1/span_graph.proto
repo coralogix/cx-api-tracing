@@ -12,7 +12,7 @@ enum SpanGraphMetric {
 
 enum SpanGraphDimension {
   SPAN_GRAPH_DIMENSION_UNSPECIFIED = 0;
-  SPAN_GRAPH_DIMENSION_TRACE_ID = 1;
+  SPAN_GRAPH_DIMENSION_SPAN_ID = 1;
 }
 
 message SpanGraphDescriptor {
