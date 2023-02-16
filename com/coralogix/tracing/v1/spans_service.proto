@@ -4,6 +4,7 @@ import "com/coralogix/tracing/v1/audit_log.proto";
 import "com/coralogix/tracing/v1/span.proto";
 import "com/coralogix/tracing/v1/span_query.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
+import "span_graph.proto";
 
 package com.coralogix.tracing.v1;
 
@@ -46,6 +47,16 @@ message GetSpanFiltersResponse {
   repeated TagFilterField process_tag_filters = 6;
 }
 
+message GetSpanGraphRequest {
+  SpanQuery query = 1;
+  google.protobuf.Int32Value graph_id = 2;
+}
+
+message GetSpanGraphResponse {
+  SpanGraphResult graph = 1;
+  google.protobuf.Int64Value graph_id = 2;
+}
+
 service SpanService {
   rpc GetSpan(GetSpanRequest) returns (GetSpanResponse) {
     option (audit_log_description).description = "get span";
@@ -61,6 +72,9 @@ service SpanService {
 
   rpc GetSpanFilters(GetSpanFiltersRequest) returns (GetSpanFiltersResponse) {
     option (audit_log_description).description = "get span filters";
+  }
+  rpc GetSpanGraph(GetSpanGraphRequest) returns (GetSpanGraphResponse) {
+    option (audit_log_description).description = "get span graph";
   }
 }
 
