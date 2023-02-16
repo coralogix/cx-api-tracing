@@ -4,7 +4,7 @@ import "com/coralogix/tracing/v1/audit_log.proto";
 import "com/coralogix/tracing/v1/span.proto";
 import "com/coralogix/tracing/v1/span_query.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
-import "span_graph.proto";
+import "com/coralogix/tracing/v1/span_graph.proto";
 
 package com.coralogix.tracing.v1;
 
