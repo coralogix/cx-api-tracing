@@ -15,10 +15,15 @@ enum SpanGraphDimension {
   SPAN_GRAPH_DIMENSION_SPAN_ID = 1;
 }
 
+message SpanDimensionAggregation {
+  SpanGraphDimension dimension = 1;
+  DimensionAggregationType aggregation_type = 2;
+}
+
 message SpanGraphDescriptor {
   oneof aggregation {
     MetricAggregation metric_aggregation = 1;
-    DimensionAggregation dimension_aggregation = 2;
+    SpanDimensionAggregation dimension_aggregation = 2;
   }
   oneof group_by_field {
     MetadataFilterFieldName metadata_field = 3;
