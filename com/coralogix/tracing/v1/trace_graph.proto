@@ -6,7 +6,6 @@ package com.coralogix.tracing.v1;
 enum TraceGraphMetric {
     TRACE_GRAPH_METRIC_FIELD_UNSPECIFIED = 0;
     TRACE_GRAPH_METRIC_FIELD_DURATION = 1;
-    SPAN_GRAPH_METRIC_FIELD_DURATION = 2;
 }
 
 enum MetricAggregationType {
@@ -28,7 +27,7 @@ message MetricAggregation {
 enum TraceGraphDimension {
     TRACE_GRAPH_DIMENSION_UNSPECIFIED = 0;
     TRACE_GRAPH_DIMENSION_TRACE_ID = 1;
-    SPAN_GRAPH_DIMENSION_SPAN_ID = 2;
+    TRACE_GRAPH_DIMENSION_SPAN_ID = 2;
 }
 
 enum DimensionAggregationType {
