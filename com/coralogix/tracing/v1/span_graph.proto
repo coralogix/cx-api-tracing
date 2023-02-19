@@ -5,25 +5,10 @@ import "com/coralogix/tracing/v1/common.proto";
 
 package com.coralogix.tracing.v1;
 
-enum SpanGraphMetric {
-  SPAN_GRAPH_METRIC_FIELD_UNSPECIFIED = 0;
-  SPAN_GRAPH_METRIC_FIELD_DURATION = 1;
-}
-
-enum SpanGraphDimension {
-  SPAN_GRAPH_DIMENSION_UNSPECIFIED = 0;
-  SPAN_GRAPH_DIMENSION_SPAN_ID = 1;
-}
-
-message SpanDimensionAggregation {
-  SpanGraphDimension dimension = 1;
-  DimensionAggregationType aggregation_type = 2;
-}
-
 message SpanGraphDescriptor {
   oneof aggregation {
     MetricAggregation metric_aggregation = 1;
-    SpanDimensionAggregation dimension_aggregation = 2;
+    DimensionAggregation dimension_aggregation = 2;
   }
   oneof group_by_field {
     MetadataFilterFieldName metadata_field = 3;
