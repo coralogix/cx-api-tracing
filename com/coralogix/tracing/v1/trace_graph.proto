@@ -3,9 +3,9 @@ import "google/protobuf/wrappers.proto";
 import "com/coralogix/tracing/v1/common.proto";
 package com.coralogix.tracing.v1;
 
-enum GraphMetric {
-    GRAPH_METRIC_FIELD_UNSPECIFIED = 0;
-    GRAPH_METRIC_FIELD_DURATION = 1;
+enum TraceGraphMetric {
+    TRACE_GRAPH_METRIC_FIELD_UNSPECIFIED = 0;
+    TRACE_GRAPH_METRIC_FIELD_DURATION = 1;
 }
 
 enum MetricAggregationType {
@@ -20,14 +20,14 @@ enum MetricAggregationType {
 }
 
 message MetricAggregation {
-    GraphMetric metric = 1;
+    TraceGraphMetric metric = 1;
     MetricAggregationType aggregation_type = 2;
 }
 
-enum GraphDimension {
-    GRAPH_DIMENSION_UNSPECIFIED = 0;
-    GRAPH_DIMENSION_TRACE_ID = 1;
-    GRAPH_DIMENSION_SPAN_ID = 2;
+enum TraceGraphDimension {
+    TRACE_GRAPH_DIMENSION_UNSPECIFIED = 0;
+    TRACE_GRAPH_DIMENSION_TRACE_ID = 1;
+    TRACE_GRAPH_DIMENSION_SPAN_ID = 2;
 }
 
 enum DimensionAggregationType {
@@ -37,7 +37,7 @@ enum DimensionAggregationType {
 }
 
 message DimensionAggregation {
-    GraphDimension dimension = 1;
+    TraceGraphDimension dimension = 1;
     DimensionAggregationType aggregation_type = 2;
 }
 
