@@ -5,16 +5,6 @@ import "com/coralogix/tracing/v1/common.proto";
 
 package com.coralogix.tracing.v1;
 
-enum SpanGraphMetric {
-  SPAN_GRAPH_METRIC_FIELD_UNSPECIFIED = 0;
-  SPAN_GRAPH_METRIC_FIELD_DURATION = 1;
-}
-
-enum SpanGraphDimension {
-  SPAN_GRAPH_DIMENSION_UNSPECIFIED = 0;
-  SPAN_GRAPH_DIMENSION_TRACE_ID = 1;
-}
-
 message SpanGraphDescriptor {
   oneof aggregation {
     MetricAggregation metric_aggregation = 1;
@@ -27,6 +17,7 @@ message SpanGraphDescriptor {
   }
   google.protobuf.Int32Value bucket_size_millis = 5;
 }
+
 
 message SpanGraphResult {
   repeated TimeSeries series = 1;
