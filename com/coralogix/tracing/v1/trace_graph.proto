@@ -27,7 +27,6 @@ message MetricAggregation {
 enum TraceGraphDimension {
     TRACE_GRAPH_DIMENSION_UNSPECIFIED = 0;
     TRACE_GRAPH_DIMENSION_TRACE_ID = 1;
-    TRACE_GRAPH_DIMENSION_SPAN_ID = 2;
 }
 
 enum DimensionAggregationType {
