@@ -7,7 +7,7 @@ package com.coralogix.tracing.v1;
 
 message SpanGraphDescriptor {
   oneof aggregation {
-    MetricAggregation metric_aggregation = 1;
+    SpanMetricAggregation metric_aggregation = 1;
     DimensionAggregation dimension_aggregation = 2;
   }
   oneof group_by_field {
@@ -16,6 +16,16 @@ message SpanGraphDescriptor {
     google.protobuf.StringValue process_tag = 6;
   }
   google.protobuf.Int32Value bucket_size_millis = 5;
+}
+
+enum SpanGraphMetric {
+  SPAN_GRAPH_METRIC_FIELD_UNSPECIFIED = 0;
+  SPAN_GRAPH_METRIC_FIELD_DURATION = 1;
+}
+
+message SpanMetricAggregation {
+  SpanGraphMetric metric = 1;
+  MetricAggregationType aggregation_type = 2;
 }
 
 message SpanGraphResult {
