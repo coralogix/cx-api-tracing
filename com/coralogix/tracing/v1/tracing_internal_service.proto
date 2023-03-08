@@ -23,6 +23,14 @@ message GetTraceProcessTagsInternalResponse {
     repeated google.protobuf.StringValue tags = 3;
 }
 
+message CreateCachedTraceQueryInternalRequest {
+    TracingQueryDefinition query = 1;
+}
+
+message CreateCachedTraceQueryInternalResponse {
+    google.protobuf.StringValue query_id = 1;
+}
+
 service TracingInternalService {
     rpc GetTraceTagsInternal(GetTraceTagsInternalRequest) returns (GetTraceTagsInternalResponse) {
         option (audit_log_description).description = "get trace tags internal";
@@ -31,4 +39,9 @@ service TracingInternalService {
     rpc GetTraceProcessTagsInternal(GetTraceProcessTagsInternalRequest) returns (GetTraceProcessTagsInternalResponse) {
         option (audit_log_description).description = "get trace process tags internal";
     }
+
+    rpc CreateCachedTraceQueryInternal(CreateCachedTraceQueryInternalRequest) returns (CreateCachedTraceQueryInternalResponse) {
+        option (audit_log_description).description = "create cached trace query internal";
+    }
+
 }
