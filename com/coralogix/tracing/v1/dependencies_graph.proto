@@ -1,5 +1,6 @@
 syntax = "proto3";
 import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
 package com.coralogix.tracing.v1;
 
 message ServiceNode {
@@ -23,4 +24,5 @@ message ServiceEdge {
 message TracesDependenciesGraph {
   repeated ServiceNode nodes = 1;
   repeated ServiceEdge edges = 2;
+  google.protobuf.Timestamp graph_timestamp = 3;
 }
