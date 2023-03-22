@@ -10,7 +10,7 @@ message ServiceNode {
   google.protobuf.DoubleValue average_duration = 4;
   map<string, google.protobuf.StringValue> tags = 5;
   map<string, google.protobuf.StringValue> process_tags = 6;
-  google.protobuf.BoolValue is_peer = 6;
+  google.protobuf.BoolValue is_peer = 7;
 }
 
 message ServiceEdge {
