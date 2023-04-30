@@ -1,0 +1,8 @@
+syntax = "proto3";
+package com.coralogix.tracing.v1;
+
+enum QueryBackend {
+    QUERY_BACKEND_UNSPECIFIED = 0;
+    QUERY_BACKEND_HIGH_TIER = 1;
+    QUERY_BACKEND_ARCHIVE = 2;
+}
