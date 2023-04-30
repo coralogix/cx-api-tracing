@@ -36,6 +36,19 @@ message SpanQueryDefinition {
   google.protobuf.StringValue lucene_query = 12;
 }
 
+enum SpanQuerySource {
+  SPAN_QUERY_SOURCE_UNSPECIFIED = 0;
+  SPAN_QUERY_SOURCE_GET_SPANS = 1;
+  SPAN_QUERY_SOURCE_GET_SPANS_COUNT = 2;
+  SPAN_QUERY_SOURCE_GET_SPANS_FILTER = 3;
+  SPAN_QUERY_SOURCE_GET_SPANS_GRAPH = 4;
+}
+
+message SourcedSpanQueryDefinition {
+  SpanQuerySource query_source = 1;
+  SpanQueryDefinition query_definition = 2;
+}
+
 message SpanQuery {
   google.protobuf.StringValue id = 1;
   SpanQueryDefinition query = 2;

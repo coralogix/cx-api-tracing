@@ -57,6 +57,18 @@ message GetSpanGraphResponse {
   google.protobuf.Int64Value graph_id = 2;
 }
 
+message GetAllSpanDataRequest {
+  SpanQuery query = 1;
+  google.protobuf.Int32Value graph_id = 2;
+}
+
+message GetAllSpanDataResponse {
+  repeated GetSpanResponse span_data = 1;
+  GetSpanCountResponse span_count_data = 2;
+  repeated GetSpanFiltersResponse span_filter_data = 3;
+  GetSpanGraphResponse span_graph_data = 4;
+}
+
 service SpanService {
   rpc GetSpan(GetSpanRequest) returns (GetSpanResponse) {
     option (audit_log_description).description = "get span";
@@ -75,6 +87,9 @@ service SpanService {
   }
   rpc GetSpanGraph(GetSpanGraphRequest) returns (GetSpanGraphResponse) {
     option (audit_log_description).description = "get span graph";
+  }
+  rpc GetAllSpanData(GetAllSpanDataRequest) returns (GetAllSpanDataResponse) {
+    option (audit_log_description).description = "get all span data";
   }
 }
 
