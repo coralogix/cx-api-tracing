@@ -76,6 +76,7 @@ message GetAllSpanDataResponse {
   GetSpanGraphResponse span_graph_data = 4;
 }
 
+
 service SpanService {
   rpc GetSpan(GetSpanRequest) returns (GetSpanResponse) {
     option (audit_log_description).description = "get span";
