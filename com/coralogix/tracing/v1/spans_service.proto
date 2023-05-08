@@ -59,23 +59,14 @@ message GetSpanGraphResponse {
 
 message GetAllSpanDataRequest {
   SpanQuery query = 1;
-  google.protobuf.Int32Value graph_id = 2;
-}
-
-message GetAllSpanDataResult {
-  repeated Span spans_result = 1;
-  google.protobuf.Int64Value spans_count = 2;
-  GetSpanFiltersResponse span_filter_result = 3;
-  SpanGraphResult span_graph_result = 4;
 }
 
 message GetAllSpanDataResponse {
   GetSpansResponse spans_data = 1;
   GetSpanCountResponse span_count_data = 2;
   GetSpanFiltersResponse span_filter_data = 3;
-  GetSpanGraphResponse span_graph_data = 4;
+  repeated GetSpanGraphResponse span_graph_data = 4;
 }
-
 
 service SpanService {
   rpc GetSpan(GetSpanRequest) returns (GetSpanResponse) {
