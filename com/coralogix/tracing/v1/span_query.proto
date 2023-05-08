@@ -1,4 +1,6 @@
 syntax = "proto3";
+
+import "com/coralogix/tracing/v1/query_backend.proto";
 import "google/protobuf/wrappers.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
 import "com/coralogix/tracing/v1/span_graph.proto";
@@ -40,4 +42,5 @@ message SpanQuery {
   google.protobuf.StringValue id = 1;
   SpanQueryDefinition query = 2;
   google.protobuf.Int32Value saved_view_id = 3;
+  QueryBackend query_backend = 4;
 }
