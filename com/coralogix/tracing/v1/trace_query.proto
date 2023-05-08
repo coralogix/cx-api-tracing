@@ -1,4 +1,6 @@
 syntax = "proto3";
+
+import "com/coralogix/tracing/v1/value_filter.proto";
 import "google/protobuf/wrappers.proto";
 import "com/coralogix/tracing/v1/trace_graph.proto";
 import "com/coralogix/tracing/v1/common.proto";
@@ -35,11 +37,13 @@ message FilterFieldValue {
 message MetadataFilter {
     MetadataFilterFieldName metadata_field = 1;
     repeated google.protobuf.StringValue values = 2;
+    ValueFilters value_filters = 3;
 }
 
 message TagFilter {
     google.protobuf.StringValue tag_name = 1;
     repeated google.protobuf.StringValue values = 2;
+    ValueFilters value_filters = 3;
 }
 
 message MetadataFilterField {

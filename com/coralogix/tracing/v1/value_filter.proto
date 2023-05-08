@@ -1,0 +1,32 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+package com.coralogix.tracing.v1;
+
+message StartWithFilter {
+    google.protobuf.StringValue prefix = 1;
+}
+
+message EndsWithFilter {
+    google.protobuf.StringValue suffix = 1;
+}
+
+message ContainsFilter {
+    google.protobuf.StringValue sub_str = 1;
+}
+
+message EqualsFilter {
+    repeated google.protobuf.StringValue values = 1;
+}
+
+message ValueFilter {
+    oneof filter {
+        EqualsFilter equals_filter = 1;
+        StartWithFilter start_with_filter = 2;
+        EndsWithFilter ends_with_filter = 3;
+        ContainsFilter contains_filter = 4;
+    }
+}
+
+message ValueFilters {
+    repeated ValueFilter filters = 1;
+}
