@@ -6,16 +6,25 @@ import "com/coralogix/tracing/v1/common.proto";
 package com.coralogix.tracing.v1;
 
 message SpanGraphDescriptor {
+  message GroupByField {
+    oneof field {
+      MetadataFilterFieldName metadata_field = 1;
+      google.protobuf.StringValue tag_name = 2;
+      google.protobuf.StringValue process_tag = 3;
+    }
+  }
   oneof aggregation {
     MetricAggregation metric_aggregation = 1;
     DimensionAggregation dimension_aggregation = 2;
   }
   oneof group_by_field {
-    MetadataFilterFieldName metadata_field = 3;
-    google.protobuf.StringValue tag_name = 4;
-    google.protobuf.StringValue process_tag = 6;
+    MetadataFilterFieldName metadata_field = 3 [deprecated=true];
+    google.protobuf.StringValue tag_name = 4 [deprecated=true];
+    google.protobuf.StringValue process_tag = 6 [deprecated=true];
   }
   google.protobuf.Int32Value bucket_size_millis = 5;
+  repeated GroupByField group_by_fields = 7;
+  google.protobuf.StringValue metric_field = 8;
 }
 
 
