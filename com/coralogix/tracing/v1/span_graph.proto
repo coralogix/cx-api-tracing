@@ -24,7 +24,6 @@ message SpanGraphDescriptor {
   }
   google.protobuf.Int32Value bucket_size_millis = 5;
   repeated GroupByField group_by_fields = 7;
-  google.protobuf.StringValue metric_field = 8;
 }
 
 
