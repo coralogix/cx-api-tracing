@@ -4,6 +4,7 @@ import "com/coralogix/tracing/v1/query_backend.proto";
 import "google/protobuf/wrappers.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
 import "com/coralogix/tracing/v1/span_graph.proto";
+import "com/coralogix/tracing/v1/common.proto";
 
 package com.coralogix.tracing.v1;
 
@@ -29,15 +30,47 @@ message SpanQueryDefinition {
   repeated MetadataFilter metadata_filters = 3;
   repeated TagFilter tag_filters = 4;
   repeated google.protobuf.StringValue trace_id = 5;
-  google.protobuf.Int32Value size = 6;
+  // Use spans_fetch_parameters.limit instead
+  google.protobuf.Int32Value size = 6 [deprecated=true];
   google.protobuf.Int32Value filter_size = 7;
   repeated SpanGraphDescriptor graphs = 8;
   repeated google.protobuf.UInt32Value teams = 9;
   LatencyPercentileType latency_percentile = 10;
   repeated TagFilter process_tag_filters = 11;
   google.protobuf.StringValue lucene_query = 12;
-  repeated google.protobuf.StringValue sort = 13;
-  google.protobuf.StringValue page_id = 14;
+  SpansFetchParameters spans_fetch_parameters = 13;
+  repeated Sort sort = 14;
+}
+
+message SpansFetchParameters {
+  google.protobuf.Int32Value limit = 1;
+  google.protobuf.Int32Value offset = 2;
+}
+
+message Sort {
+  enum SortType {
+    SORT_TYPE_UNSPECIFIED = 0;
+    SORT_TYPE_ASC = 1;
+    SORT_TYPE_DESC = 2;
+  }
+
+  SortableField field = 1;
+  SortType type = 2;
+}
+
+message SortableField {
+  message Duration {}
+  message StartTime {}
+  message Tag {}
+  message ProcessTag {}
+
+  oneof field {
+      MetadataFilterFieldName metadata = 1;
+      Duration duration = 2;
+      StartTime start_time = 3;
+      Tag tag = 4;
+      ProcessTag process_tag = 5;
+  }
 }
 
 message SpanQuery {
