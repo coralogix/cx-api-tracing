@@ -2,6 +2,18 @@ syntax = "proto3";
 import "google/protobuf/wrappers.proto";
 package com.coralogix.tracing.v1;
 
+enum ReferenceType {
+    REFERENCE_TYPE_UNSPECIFIED = 0;
+    REFERENCE_TYPE_FOLLOWED_FROM = 1;
+    REFERENCE_TYPE_FOLLOWED_BY = 2;
+}
+
+message Reference {
+    google.protobuf.StringValue trace_id = 1;
+    google.protobuf.StringValue span_id = 2;
+    ReferenceType reference_type = 3;
+}
+
 message Log {
     google.protobuf.Int64Value timestamp = 1;
     map<string, google.protobuf.StringValue> fields = 2;
@@ -22,4 +34,5 @@ message Span {
     google.protobuf.Int32Value company_id = 12;
     google.protobuf.StringValue application_name = 13;
     google.protobuf.StringValue subsystem_name = 14;
+    repeated Reference references = 15;
 }

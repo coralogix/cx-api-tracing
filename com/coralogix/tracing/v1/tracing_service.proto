@@ -15,6 +15,7 @@ message GetTraceRequest {
     google.protobuf.Int32Value team_id = 2;
     TraceQueryTimeRange time_range = 3;
     QueryBackend query_backend = 4;
+    google.protobuf.Int32Value reference_fetch_limit = 5;
 }
 
 message GetTraceResponse {
