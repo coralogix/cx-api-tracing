@@ -54,15 +54,19 @@ message Sort {
     SORT_TYPE_DESC = 2;
   }
 
-  SortableField field = 1;
+  SortableField sort_by = 1;
   SortType type = 2;
 }
 
 message SortableField {
   message Duration {}
   message StartTime {}
-  message Tag {}
-  message ProcessTag {}
+  message Tag {
+    google.protobuf.StringValue name = 1;
+  }
+  message ProcessTag {
+    google.protobuf.StringValue name = 1;
+  }
 
   oneof field {
       MetadataFilterFieldName metadata = 1;
