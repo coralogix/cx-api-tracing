@@ -39,23 +39,23 @@ message SpanQueryDefinition {
   repeated TagFilter process_tag_filters = 11;
   google.protobuf.StringValue lucene_query = 12;
   SpansFetchParameters spans_fetch_parameters = 13;
-  repeated Sort sort = 14;
 }
 
 message SpansFetchParameters {
   google.protobuf.Int32Value limit = 1;
   google.protobuf.Int32Value offset = 2;
+  repeated Sort sort = 3;
 }
 
 message Sort {
-  enum SortType {
-    SORT_TYPE_UNSPECIFIED = 0;
-    SORT_TYPE_ASC = 1;
-    SORT_TYPE_DESC = 2;
+  enum SortOrder {
+    SORT_ORDER_UNSPECIFIED = 0;
+    SORT_ORDER_ASC = 1;
+    SORT_ORDER_DESC = 2;
   }
 
   SortableField sort_by = 1;
-  SortType type = 2;
+  SortOrder type = 2;
 }
 
 message SortableField {
