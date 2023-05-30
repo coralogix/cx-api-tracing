@@ -55,7 +55,7 @@ message Sort {
   }
 
   SortableField sort_by = 1;
-  SortOrder type = 2;
+  SortOrder order = 2;
 }
 
 message SortableField {
