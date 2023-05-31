@@ -6,16 +6,36 @@ import "com/coralogix/tracing/v1/common.proto";
 package com.coralogix.tracing.v1;
 
 message SpanGraphDescriptor {
+  message TimeSeriesGraph {
+    google.protobuf.Int32Value bucket_size_millis = 1;
+  }
+  message GaugeGraph {}
+
+  message GroupByField {
+    oneof field {
+      MetadataFilterFieldName metadata_field = 1;
+      google.protobuf.StringValue tag_name = 2;
+      google.protobuf.StringValue process_tag = 3;
+    }
+  }
   oneof aggregation {
     MetricAggregation metric_aggregation = 1;
     DimensionAggregation dimension_aggregation = 2;
   }
+  // Use group_by_fields instead
   oneof group_by_field {
-    MetadataFilterFieldName metadata_field = 3;
-    google.protobuf.StringValue tag_name = 4;
-    google.protobuf.StringValue process_tag = 6;
+    MetadataFilterFieldName metadata_field = 3 [deprecated=true];
+    google.protobuf.StringValue tag_name = 4 [deprecated=true];
+    google.protobuf.StringValue process_tag = 6 [deprecated=true];
   }
-  google.protobuf.Int32Value bucket_size_millis = 5;
+
+  // Use aggregation_type { histogram { bucket_size_millis }} instead
+  google.protobuf.Int32Value bucket_size_millis = 5 [deprecated=true];
+  repeated GroupByField group_by_fields = 7;
+  oneof graph_type {
+    TimeSeriesGraph time_series = 8;
+    GaugeGraph gauge = 9;
+  }
 }
 
 

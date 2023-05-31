@@ -20,8 +20,24 @@ enum MetricAggregationType {
 }
 
 message MetricAggregation {
-    TraceGraphMetric metric = 1;
+    message MetricField {
+        message Duration {}
+        message Tag {
+            google.protobuf.StringValue value = 1;
+        }
+        message ProcessTag {
+            google.protobuf.StringValue value = 1;
+        }
+        oneof field {
+            Duration duration = 1;
+            Tag tag = 2;
+            ProcessTag process_tag = 3;
+        }
+    }
+    // Use metric_field instead
+    TraceGraphMetric metric = 1[deprecated=true];
     MetricAggregationType aggregation_type = 2;
+    MetricField metric_field = 3;
 }
 
 enum TraceGraphDimension {
@@ -57,12 +73,16 @@ message TracingGraphDescriptor {
 
 message GraphPoint {
     google.protobuf.Int64Value timestamp = 1;
-    google.protobuf.Int32Value value = 2;
+    // We use double for better precision so it is recommended to use aggregation_value instead
+    google.protobuf.Int32Value value = 2 [deprecated=true];
+    google.protobuf.DoubleValue aggregation_value = 3;
 }
 
 message TimeSeries {
-    google.protobuf.StringValue key = 1;
+    // Use labels instead as it is easier for use with multiple bucket aggregation
+    google.protobuf.StringValue key = 1 [deprecated=true];
     repeated GraphPoint data = 2;
+    map<string, string> labels = 3;
 }
 
 message TracingGraphResult {
