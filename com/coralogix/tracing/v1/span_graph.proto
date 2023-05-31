@@ -6,10 +6,10 @@ import "com/coralogix/tracing/v1/common.proto";
 package com.coralogix.tracing.v1;
 
 message SpanGraphDescriptor {
-  message HistogramAggregation {
+  message TimeSeriesGraph {
     google.protobuf.Int32Value bucket_size_millis = 1;
   }
-  message SingleBucketAggregation {}
+  message GaugeGraph {}
 
   message GroupByField {
     oneof field {
@@ -32,9 +32,9 @@ message SpanGraphDescriptor {
   // Use aggregation_type { histogram { bucket_size_millis }} instead
   google.protobuf.Int32Value bucket_size_millis = 5 [deprecated=true];
   repeated GroupByField group_by_fields = 7;
-  oneof aggregation_type {
-    HistogramAggregation histogram = 8;
-    SingleBucketAggregation single_bucket = 9;
+  oneof graph_type {
+    TimeSeriesGraph time_series = 8;
+    GaugeGraph gauge = 9;
   }
 }
 
