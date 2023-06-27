@@ -39,7 +39,7 @@ message SpanQueryDefinition {
   repeated TagFilter process_tag_filters = 11;
   google.protobuf.StringValue lucene_query = 12;
   SpansFetchParameters spans_fetch_parameters = 13;
-  optional google.protobuf.BoolValue only_root_spans = 14;
+  google.protobuf.BoolValue only_root_spans = 14;
 }
 
 message SpansFetchParameters {
