@@ -79,7 +79,7 @@ message SortableField {
 }
 
 message SpanQuery {
-  google.protobuf.StringValue id = 1;
+  reserved 1;
   SpanQueryDefinition query = 2;
   google.protobuf.Int32Value saved_view_id = 3;
   QueryBackend query_backend = 4;

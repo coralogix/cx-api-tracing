@@ -7,8 +7,20 @@ import "com/coralogix/tracing/v1/span.proto";
 import "com/coralogix/tracing/v1/trace.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
 import "com/coralogix/tracing/v1/trace_graph.proto";
+import "com/coralogix/tracing/v1/spans_service.proto";
 
 package com.coralogix.tracing.v1;
+
+message GetFullTracingDataRequest {
+    TracingQuery query = 1;
+}
+
+message GetFullTracingDataResponse {
+    GetTracesResponse traces = 1;
+    GetSpanCountResponse spans_count = 2;
+    GetSpanFiltersResponse span_filter_data = 3;
+    repeated GetSpanGraphResponse span_graph_data = 4;
+}
 
 message GetTraceRequest {
     google.protobuf.StringValue trace_id = 1; // required
@@ -144,5 +156,9 @@ service TracingService {
 
     rpc SetCachedTraceQuery(SetCachedTraceQueryRequest) returns (SetCachedTraceQueryResponse) {
         option (audit_log_description).description = "set cached trace query";
+    }
+
+    rpc GetFullTracingData(GetFullTracingDataRequest) returns (GetFullTracingDataResponse) {
+        option (audit_log_description).description = "get full tracing data";
     }
 }
