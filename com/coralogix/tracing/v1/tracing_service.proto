@@ -48,6 +48,13 @@ message GetCachedTraceQueryResponse {
     google.protobuf.Int32Value saved_view_id = 2;
 }
 
+message SetCachedTraceQueryRequest {
+    google.protobuf.StringValue query_id = 1;
+    TracingQuery query = 2;
+}
+
+message SetCachedTraceQueryResponse {}
+
 message GetTraceFiltersRequest {
     TracingQuery query = 1;
 }
@@ -133,5 +140,9 @@ service TracingService {
 
     rpc GetTraceLatencyPercentile(GetTraceLatencyPercentileRequest) returns (GetTraceLatencyPercentileResponse) {
         option (audit_log_description).description = "get trace latency";
+    }
+
+    rpc SetCachedTraceQuery(SetCachedTraceQueryRequest) returns (SetCachedTraceQueryResponse) {
+        option (audit_log_description).description = "set cached trace query";
     }
 }
