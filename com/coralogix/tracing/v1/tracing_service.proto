@@ -16,8 +16,8 @@ message GetFullTracingDataRequest {
 }
 
 message GetFullTracingDataResponse {
-    GetTracesResponse traces = 1;
-    GetSpanCountResponse spans_count = 2;
+    GetTracesResponse traces_data = 1;
+    GetSpanCountResponse span_count_data = 2;
     GetSpanFiltersResponse span_filter_data = 3;
     repeated GetSpanGraphResponse span_graph_data = 4;
 }
