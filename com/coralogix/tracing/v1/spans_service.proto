@@ -68,6 +68,22 @@ message GetFullSpanDataResponse {
   repeated GetSpanGraphResponse span_graph_data = 4;
 }
 
+message GetCachedSpanQueryRequest {
+  google.protobuf.StringValue query_id = 1;
+}
+
+message GetCachedSpanQueryResponse {
+  SpanQueryDefinition query = 1;
+  google.protobuf.Int32Value saved_view_id = 2;
+}
+
+message SetCachedSpanQueryRequest {
+  google.protobuf.StringValue query_id = 1;
+  SpanQuery query = 2;
+}
+
+message SetCachedSpanQueryResponse {}
+
 service SpanService {
   rpc GetSpan(GetSpanRequest) returns (GetSpanResponse) {
     option (audit_log_description).description = "get span";
@@ -89,6 +105,12 @@ service SpanService {
   }
   rpc GetFullSpanData(GetFullSpanDataRequest) returns (GetFullSpanDataResponse) {
     option (audit_log_description).description = "get full span data";
+  }
+  rpc GetCachedSpanQuery(GetCachedSpanQueryRequest) returns (GetCachedSpanQueryResponse) {
+    option (audit_log_description).description = "get cached spans query";
+  }
+  rpc SetCachedSpanQuery(SetCachedSpanQueryRequest) returns (SetCachedSpanQueryResponse) {
+    option (audit_log_description).description = "set cached spans query";
   }
 }
 
