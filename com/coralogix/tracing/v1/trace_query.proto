@@ -1,9 +1,11 @@
 syntax = "proto3";
 
+import "com/coralogix/tracing/v1/query_backend.proto";
 import "com/coralogix/tracing/v1/value_filter.proto";
 import "google/protobuf/wrappers.proto";
 import "com/coralogix/tracing/v1/trace_graph.proto";
 import "com/coralogix/tracing/v1/common.proto";
+import "com/coralogix/tracing/v1/span_graph.proto";
 package com.coralogix.tracing.v1;
 
 enum LatencyPercentileType {
@@ -69,10 +71,12 @@ message TracingQueryDefinition {
     LatencyPercentileType latency_percentile = 10;
     repeated TagFilter process_tag_filters = 11;
     google.protobuf.StringValue lucene_query = 12;
+    repeated SpanGraphDescriptor span_graphs = 13;
 }
 
 message TracingQuery {
     google.protobuf.StringValue id = 1;
     TracingQueryDefinition query = 2;
     google.protobuf.Int32Value saved_view_id = 3;
+    QueryBackend query_backend = 4;
 }
