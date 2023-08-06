@@ -1,5 +1,6 @@
 syntax = "proto3";
 import "google/protobuf/wrappers.proto";
+import "com/coralogix/tracing/v1/span.proto";
 package com.coralogix.tracing.v1;
 
 message Trace {
@@ -17,4 +18,5 @@ message Trace {
     google.protobuf.BoolValue root_span_visible = 12;
     google.protobuf.Int32Value company_id = 13;
     google.protobuf.BoolValue too_many_spans = 14;
+    Span root_span = 15;
 }
