@@ -133,6 +133,7 @@ message GetReferencedTracesResponse {
         repeated google.protobuf.StringValue referenced_trace_ids = 2;
     }
     repeated TraceReference references = 1;
+    TraceQueryTimeRange time_range = 2;
 }
 
 service TracingService {
