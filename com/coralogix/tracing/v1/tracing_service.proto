@@ -34,6 +34,7 @@ message GetTraceRequest {
 message GetTraceResponse {
     google.protobuf.StringValue trace_id = 1;
     repeated Span spans = 2;
+    google.protobuf.Int32Value total_number_of_spans = 3;
 }
 
 message GetTracesRequest {
