@@ -28,6 +28,7 @@ message GetTraceRequest {
     TraceQueryTimeRange time_range = 3;
     QueryBackend query_backend = 4;
     google.protobuf.Int32Value reference_fetch_limit = 5;
+    google.protobuf.Int32Value max_multi_trace_width = 6;
 }
 
 message GetTraceResponse {
