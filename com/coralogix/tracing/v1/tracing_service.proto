@@ -121,7 +121,7 @@ message GetTraceProcessTagsResponse {
     repeated google.protobuf.StringValue tags = 3;
 }
 
-message GetReferencedTracesRequest {
+message GetReferencingTracesRequest {
     message ReferenceSource {
         Span span = 1;
     }
@@ -131,16 +131,9 @@ message GetReferencedTracesRequest {
     QueryBackend query_backend = 4;
 }
 
-message GetReferencedTracesResponse {
-    message TraceReference {
-        message Destination {
-            GetTraceResponse trace = 1;
-            google.protobuf.StringValue destination_span_id = 2;
-        }
-        Span source_span = 1;
-        Destination destination = 3;
-    }
-    repeated TraceReference references = 1;
+message GetReferencingTracesResponse {
+    repeated Span referencing_traces_spans = 1;
+    google.protobuf.Int32Value total_number_of_spans = 2;
 }
 
 service TracingService {
@@ -188,7 +181,7 @@ service TracingService {
         option (audit_log_description).description = "get full tracing data";
     }
 
-    rpc GetReferencedTraces(GetReferencedTracesRequest) returns (GetReferencedTracesResponse) {
+    rpc GetReferencingTraces(GetReferencingTracesRequest) returns (GetReferencingTracesResponse) {
         option (audit_log_description).description = "get referenced traces";
     }
 }
