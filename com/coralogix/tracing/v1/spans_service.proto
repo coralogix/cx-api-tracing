@@ -73,13 +73,15 @@ message GetCachedSpanQueryRequest {
 }
 
 message GetCachedSpanQueryResponse {
-  SpanQueryDefinition query = 1;
-  google.protobuf.Int32Value saved_view_id = 2;
+  SpanQueryDefinition query = 1 [deprecated=true];
+  google.protobuf.Int32Value saved_view_id = 2 [deprecated=true];
+  SpanRequest tracing_request = 3;
 }
 
 message SetCachedSpanQueryRequest {
   google.protobuf.StringValue query_id = 1;
-  SpanQuery query = 2;
+  SpanQuery query = 2 [deprecated=true];
+  SpanRequest span_request = 3;
 }
 
 message SetCachedSpanQueryResponse {}
