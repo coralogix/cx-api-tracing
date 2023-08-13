@@ -124,7 +124,6 @@ message GetTraceProcessTagsResponse {
 message GetReferencedTracesRequest {
     message ReferenceSource {
         Span span = 1;
-
     }
     repeated ReferenceSource sources = 1;
 }
@@ -132,11 +131,10 @@ message GetReferencedTracesRequest {
 message GetReferencedTracesResponse {
     message TraceReference {
         message Destination {
-            Trace destination_trace = 1;
+            GetTraceResponse trace = 1;
             google.protobuf.StringValue destination_span_id = 2;
         }
         Span source_span = 1;
-        repeated google.protobuf.StringValue referenced_trace_ids = 2;
         Destination destination = 3;
     }
     repeated TraceReference references = 1;
