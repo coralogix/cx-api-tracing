@@ -75,7 +75,7 @@ message GetCachedSpanQueryRequest {
 message GetCachedSpanQueryResponse {
   SpanQueryDefinition query = 1 [deprecated=true];
   google.protobuf.Int32Value saved_view_id = 2 [deprecated=true];
-  SpanRequest tracing_request = 3;
+  SpanRequest span_request = 3;
 }
 
 message SetCachedSpanQueryRequest {

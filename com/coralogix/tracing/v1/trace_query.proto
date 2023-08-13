@@ -89,6 +89,5 @@ message TracingUIData {
 
 message TracingRequest {
     TracingQueryDefinition tracing_query_definition = 1;
-    QueryBackend query_backend = 2;
-    TracingUIData tracing_ui_data = 3;
+    TracingUIData tracing_ui_data = 2;
 }
