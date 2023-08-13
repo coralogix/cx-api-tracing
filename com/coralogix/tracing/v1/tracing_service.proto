@@ -126,6 +126,7 @@ message GetReferencedTracesRequest {
         Span span = 1;
     }
     repeated ReferenceSource sources = 1;
+    google.protobuf.Int32Value team_id = 2;
 }
 
 message GetReferencedTracesResponse {
