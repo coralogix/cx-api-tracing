@@ -83,8 +83,8 @@ message TracingQuery {
 }
 
 message TracingUIData {
-    repeated google.protobuf.Struct column_defs = 1;
-    repeated google.protobuf.Struct column_state = 2;
+    google.protobuf.StringValue column_defs = 1;
+    google.protobuf.StringValue column_state = 2;
     google.protobuf.Int32Value saved_view_id = 3;
     google.protobuf.Int32Value action_column_def_index = 4;
 }
