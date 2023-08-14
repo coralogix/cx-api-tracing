@@ -2,7 +2,6 @@ syntax = "proto3";
 
 import "com/coralogix/tracing/v1/query_backend.proto";
 import "google/protobuf/wrappers.proto";
-import "google/protobuf/struct.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
 import "com/coralogix/tracing/v1/span_graph.proto";
 import "com/coralogix/tracing/v1/common.proto";
