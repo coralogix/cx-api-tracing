@@ -89,6 +89,7 @@ message SpanUIData {
   repeated google.protobuf.StringValue column_defs = 1;
   repeated google.protobuf.StringValue column_state = 2;
   google.protobuf.Int32Value saved_view_id = 3;
+  google.protobuf.Int32Value action_column_def_index = 4;
 }
 
 message SpanRequest {
