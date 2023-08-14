@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "com/coralogix/tracing/v1/query_backend.proto";
 import "google/protobuf/wrappers.proto";
+import "google/protobuf/struct.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
 import "com/coralogix/tracing/v1/span_graph.proto";
 import "com/coralogix/tracing/v1/common.proto";
@@ -86,8 +87,8 @@ message SpanQuery {
 }
 
 message SpanUIData {
-  repeated google.protobuf.StringValue column_defs = 1;
-  repeated google.protobuf.StringValue column_state = 2;
+  repeated google.protobuf.Struct column_defs = 1;
+  repeated google.protobuf.Struct column_state = 2;
   google.protobuf.Int32Value saved_view_id = 3;
   google.protobuf.Int32Value action_column_def_index = 4;
 }
