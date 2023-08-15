@@ -81,7 +81,7 @@ message TracingQuery {
     QueryBackend query_backend = 4;
 }
 
-message TracingUIData {
+message UIData {
     google.protobuf.StringValue column_defs = 1;
     google.protobuf.StringValue column_state = 2;
     google.protobuf.Int32Value saved_view_id = 3;
@@ -89,6 +89,6 @@ message TracingUIData {
 }
 
 message TracingRequest {
-    TracingQueryDefinition tracing_query_definition = 1;
-    TracingUIData tracing_ui_data = 2;
+    TracingQueryDefinition query_definition = 1;
+    UIData tracing_ui_data = 2;
 }

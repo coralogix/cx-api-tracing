@@ -93,6 +93,6 @@ message SpanUIData {
 }
 
 message SpanRequest {
-  SpanQueryDefinition span_query_definition = 1;
-  TracingUIData span_ui_data = 2;
+  SpanQueryDefinition query_definition = 1;
+  SpanUIData ui_data = 2;
 }
