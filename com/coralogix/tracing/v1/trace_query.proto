@@ -90,5 +90,5 @@ message UIData {
 
 message TracingRequest {
     TracingQueryDefinition query_definition = 1;
-    UIData tracing_ui_data = 2;
+    UIData ui_data = 2;
 }
