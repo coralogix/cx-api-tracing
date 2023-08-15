@@ -75,8 +75,20 @@ message TracingQueryDefinition {
 }
 
 message TracingQuery {
-    google.protobuf.StringValue id = 1;
+    google.protobuf.StringValue id = 1 [deprecated=true];
     TracingQueryDefinition query = 2;
-    google.protobuf.Int32Value saved_view_id = 3;
+    google.protobuf.Int32Value saved_view_id = 3 [deprecated=true];
     QueryBackend query_backend = 4;
+}
+
+message UIData {
+    google.protobuf.StringValue column_defs = 1;
+    google.protobuf.StringValue column_state = 2;
+    google.protobuf.Int32Value saved_view_id = 3;
+    google.protobuf.Int32Value action_column_def_index = 4;
+}
+
+message TracingRequest {
+    TracingQueryDefinition query_definition = 1;
+    UIData ui_data = 2;
 }

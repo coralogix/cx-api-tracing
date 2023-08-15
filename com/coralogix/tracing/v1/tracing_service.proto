@@ -56,13 +56,15 @@ message GetCachedTraceQueryRequest {
 }
 
 message GetCachedTraceQueryResponse {
-    TracingQueryDefinition query = 1;
-    google.protobuf.Int32Value saved_view_id = 2;
+    TracingQueryDefinition query = 1 [deprecated=true];
+    google.protobuf.Int32Value saved_view_id = 2 [deprecated=true];
+    TracingRequest tracing_request = 3;
 }
 
 message SetCachedTraceQueryRequest {
     google.protobuf.StringValue query_id = 1;
-    TracingQuery query = 2;
+    TracingQuery query = 2 [deprecated=true];
+    TracingRequest tracing_request = 3;
 }
 
 message SetCachedTraceQueryResponse {}

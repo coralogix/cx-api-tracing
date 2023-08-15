@@ -79,8 +79,20 @@ message SortableField {
 }
 
 message SpanQuery {
-  google.protobuf.StringValue id = 1;
+  google.protobuf.StringValue id = 1 [deprecated=true];
   SpanQueryDefinition query = 2;
-  google.protobuf.Int32Value saved_view_id = 3;
+  google.protobuf.Int32Value saved_view_id = 3 [deprecated=true];
   QueryBackend query_backend = 4;
+}
+
+message SpanUIData {
+  google.protobuf.StringValue column_defs = 1;
+  google.protobuf.StringValue column_state = 2;
+  google.protobuf.Int32Value saved_view_id = 3;
+  google.protobuf.Int32Value action_column_def_index = 4;
+}
+
+message SpanRequest {
+  SpanQueryDefinition query_definition = 1;
+  SpanUIData ui_data = 2;
 }
