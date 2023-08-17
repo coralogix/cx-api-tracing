@@ -6,6 +6,7 @@ enum ReferenceType {
     REFERENCE_TYPE_UNSPECIFIED = 0;
     REFERENCE_TYPE_FOLLOWED_FROM = 1;
     REFERENCE_TYPE_FOLLOWED_BY = 2;
+    REFERENCE_TYPE_CHILD_OF = 3;
 }
 
 message Reference {
