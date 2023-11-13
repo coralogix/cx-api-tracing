@@ -61,11 +61,24 @@ message GetFullSpanDataRequest {
   SpanQuery query = 1;
 }
 
+message GetFullSpanDataStreamRequest {
+  SpanQuery query = 1;
+}
+
 message GetFullSpanDataResponse {
   GetSpansResponse spans_data = 1;
   GetSpanCountResponse span_count_data = 2;
   GetSpanFiltersResponse span_filter_data = 3;
   repeated GetSpanGraphResponse span_graph_data = 4;
+}
+
+message GetFullSpanDataStreamResponse {
+  oneof payload {
+    GetSpansResponse spans_data = 1;
+    GetSpanCountResponse span_count_data = 2;
+    GetSpanFiltersResponse span_filter_data = 3;
+    GetSpanGraphResponse span_graph_data = 4;
+  }
 }
 
 message GetCachedSpanQueryRequest {
@@ -107,6 +120,11 @@ service SpanService {
   }
   rpc GetFullSpanData(GetFullSpanDataRequest) returns (GetFullSpanDataResponse) {
     option (audit_log_description).description = "get full span data";
+    option deprecated = true;
+  }
+
+  rpc GetFullSpanDataStream(GetFullSpanDataStreamRequest) returns (stream GetFullSpanDataStreamResponse) {
+    option (audit_log_description).description = "get full span data stream";
   }
   rpc GetCachedSpanQuery(GetCachedSpanQueryRequest) returns (GetCachedSpanQueryResponse) {
     option (audit_log_description).description = "get cached spans query";

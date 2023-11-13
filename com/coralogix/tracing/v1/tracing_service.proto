@@ -15,11 +15,24 @@ message GetFullTracingDataRequest {
     TracingQuery query = 1;
 }
 
+message GetFullTracingDataStreamRequest {
+    TracingQuery query = 1;
+}
+
 message GetFullTracingDataResponse {
     GetTracesResponse traces_data = 1;
     GetSpanCountResponse span_count_data = 2;
     GetSpanFiltersResponse span_filter_data = 3;
     repeated GetSpanGraphResponse span_graph_data = 4;
+}
+
+message GetFullTracingDataStreamResponse {
+    oneof payload {
+        GetTracesResponse traces_data = 1;
+        GetSpanCountResponse span_count_data = 2;
+        GetSpanFiltersResponse span_filter_data = 3;
+        GetSpanGraphResponse span_graph_data = 4;
+    }
 }
 
 message GetTraceRequest {
@@ -179,6 +192,11 @@ service TracingService {
 
     rpc GetFullTracingData(GetFullTracingDataRequest) returns (GetFullTracingDataResponse) {
         option (audit_log_description).description = "get full tracing data";
+        option deprecated = true;
+    }
+
+    rpc GetFullTracingDataStream(GetFullTracingDataStreamRequest) returns (stream GetFullTracingDataStreamResponse) {
+        option (audit_log_description).description = "get full tracing data stream";
     }
 
     rpc GetReferencingTraces(GetReferencingTracesRequest) returns (GetReferencingTracesResponse) {
