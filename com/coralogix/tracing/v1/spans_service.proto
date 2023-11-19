@@ -76,7 +76,7 @@ message GetFullSpanDataStreamResponse {
   oneof payload {
     GetSpansResponse spans_data = 1;
     GetSpanCountResponse span_count_data = 2;
-    GetSpanFiltersResponse span_filter_data = 3;
+    GetSpanFiltersResponse span_filters_data = 3;
     GetSpanGraphResponse span_graph_data = 4;
   }
 }
