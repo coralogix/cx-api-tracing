@@ -33,7 +33,7 @@ message TraceQueryLatencyPercentile {
 
 message FilterFieldValue {
     google.protobuf.StringValue value_name = 1;
-    google.protobuf.Int32Value count = 2;
+    google.protobuf.Int64Value count = 2;
 }
 
 message MetadataFilter {
