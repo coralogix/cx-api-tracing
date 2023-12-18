@@ -142,6 +142,7 @@ message GetReferencingTracesRequest {
     google.protobuf.Int32Value team_id = 2;
     google.protobuf.Int32Value max_multi_trace_width = 3;
     QueryBackend query_backend = 4;
+    google.protobuf.BoolValue only_referencing_spans = 5;
 }
 
 message GetReferencingTracesResponse {
