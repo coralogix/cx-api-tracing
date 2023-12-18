@@ -142,12 +142,32 @@ message GetReferencingTracesRequest {
     google.protobuf.Int32Value team_id = 2;
     google.protobuf.Int32Value max_multi_trace_width = 3;
     QueryBackend query_backend = 4;
-    google.protobuf.BoolValue only_referencing_spans = 5;
 }
 
 message GetReferencingTracesResponse {
     repeated Span referencing_traces_spans = 1;
     google.protobuf.Int32Value total_number_of_spans = 2;
+}
+
+message GetSpansReferencesRequest {
+    repeated Span spans = 1;
+    google.protobuf.Int32Value team_id = 2;
+    QueryBackend query_backend = 3;
+}
+
+message GetSpansReferencesResponse {
+    message LinkFrom {
+        Span source_span = 1;
+        repeated Span destination_reference_spans = 2;
+    }
+
+    message LinkTo {
+        Span destination_span = 1;
+        repeated Span source_reference_spans = 2;
+    }
+
+    repeated LinkFrom links_from = 1;
+    repeated LinkTo links_to = 2;
 }
 
 service TracingService {
@@ -202,5 +222,9 @@ service TracingService {
 
     rpc GetReferencingTraces(GetReferencingTracesRequest) returns (GetReferencingTracesResponse) {
         option (audit_log_description).description = "get referenced traces";
+    }
+
+    rpc GetSpansReferences(GetSpansReferencesRequest) returns (GetSpansReferencesResponse) {
+        option (audit_log_description).description = "get spans references";
     }
 }
