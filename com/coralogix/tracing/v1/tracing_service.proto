@@ -156,18 +156,18 @@ message GetSpansReferencesRequest {
 }
 
 message GetSpansReferencesResponse {
-    message LinkFrom {
+    message ReferenceFrom {
         Span source_span = 1;
         repeated Span destination_reference_spans = 2;
     }
 
-    message LinkTo {
+    message ReferenceTo {
         Span destination_span = 1;
         repeated Span source_reference_spans = 2;
     }
 
-    repeated LinkFrom links_from = 1;
-    repeated LinkTo links_to = 2;
+    repeated ReferenceFrom references_from = 1;
+    repeated ReferenceTo references_to = 2;
 }
 
 service TracingService {
