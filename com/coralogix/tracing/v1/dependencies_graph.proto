@@ -3,6 +3,33 @@ import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 package com.coralogix.tracing.v1;
 
+message ServiceDetails {
+  google.protobuf.StringValue service_name = 1;
+}
+
+message DatabaseDetails {
+  google.protobuf.StringValue db_system = 1;
+  google.protobuf.StringValue db_name = 2;
+}
+
+message S3Details {
+  google.protobuf.StringValue bucket = 1;
+}
+
+message MessagingDetails {
+  google.protobuf.StringValue messaging_system = 1;
+  google.protobuf.StringValue topic = 2;
+}
+
+message Details {
+  oneof details {
+    ServiceDetails service = 1;
+    DatabaseDetails database = 2;
+    S3Details s3 = 3;
+    MessagingDetails messaging = 4;
+  }
+}
+
 message ServiceNode {
   google.protobuf.StringValue name = 1;
   google.protobuf.Int64Value total_requests = 2;
@@ -11,6 +38,7 @@ message ServiceNode {
   map<string, google.protobuf.StringValue> tags = 5;
   map<string, google.protobuf.StringValue> process_tags = 6;
   google.protobuf.BoolValue is_peer = 7;
+  Details details = 8;
 }
 
 message ServiceEdge {
@@ -20,6 +48,8 @@ message ServiceEdge {
   google.protobuf.Int64Value total_errors = 4;
   google.protobuf.DoubleValue p99_duration = 5;
   google.protobuf.DoubleValue average_duration = 6;
+  Details source_details = 7;
+  Details destination_details = 8;
 }
 
 message TracesDependenciesGraph {
