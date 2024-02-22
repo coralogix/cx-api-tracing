@@ -5,6 +5,8 @@ package com.coralogix.tracing.v1;
 
 message ServiceDetails {
   google.protobuf.StringValue service_name = 1;
+  google.protobuf.StringValue language = 2;
+  google.protobuf.StringValue provider = 3;
 }
 
 message DatabaseDetails {
