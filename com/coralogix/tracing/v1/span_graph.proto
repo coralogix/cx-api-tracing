@@ -36,6 +36,8 @@ message SpanGraphDescriptor {
     TimeSeriesGraph time_series = 8;
     GaugeGraph gauge = 9;
   }
+  // How many group values to track for each group by
+  google.protobuf.Int32Value group_size = 10;
 }
 
 
