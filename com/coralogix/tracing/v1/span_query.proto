@@ -46,6 +46,7 @@ message SpansFetchParameters {
   google.protobuf.Int32Value limit = 1;
   google.protobuf.Int32Value offset = 2;
   repeated Sort sort = 3;
+  google.protobuf.BoolValue default_sort = 4;
 }
 
 message Sort {
