@@ -1,0 +1,10 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+package com.coralogix.tracing.v1;
+
+message Service {
+  google.protobuf.StringValue service_name = 1;
+  google.protobuf.StringValue is_peer = 2;
+  map<string, google.protobuf.StringValue> tags = 3;
+  map<string, google.protobuf.StringValue> process_tags = 4;
+}
