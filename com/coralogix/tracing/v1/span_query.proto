@@ -40,13 +40,19 @@ message SpanQueryDefinition {
   google.protobuf.StringValue lucene_query = 12;
   SpansFetchParameters spans_fetch_parameters = 13;
   google.protobuf.BoolValue only_root_spans = 14;
-  google.protobuf.StringValue dataprime_query = 15;
+  DataprimeQuery dataprime_query = 15;
 }
 
 message SpansFetchParameters {
   google.protobuf.Int32Value limit = 1;
   google.protobuf.Int32Value offset = 2;
   repeated Sort sort = 3;
+}
+
+message DataprimeQuery {
+  google.protobuf.StringValue queryString = 1;
+  bytes serializedAst = 2;
+  google.protobuf.BoolValue isAggregation = 3;
 }
 
 message Sort {

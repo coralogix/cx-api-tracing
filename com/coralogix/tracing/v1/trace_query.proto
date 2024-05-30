@@ -6,6 +6,8 @@ import "google/protobuf/wrappers.proto";
 import "com/coralogix/tracing/v1/trace_graph.proto";
 import "com/coralogix/tracing/v1/common.proto";
 import "com/coralogix/tracing/v1/span_graph.proto";
+import "com/coralogix/tracing/v1/span_query.proto";
+
 package com.coralogix.tracing.v1;
 
 enum LatencyPercentileType {
@@ -72,7 +74,7 @@ message TracingQueryDefinition {
     repeated TagFilter process_tag_filters = 11;
     google.protobuf.StringValue lucene_query = 12;
     repeated SpanGraphDescriptor span_graphs = 13;
-    google.protobuf.StringValue dataprime_query = 14;
+    DataprimeQuery dataprime_query = 14;
 }
 
 message TracingQuery {
