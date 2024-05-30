@@ -49,12 +49,6 @@ message SpansFetchParameters {
   repeated Sort sort = 3;
 }
 
-message DataprimeQuery {
-  google.protobuf.StringValue queryString = 1;
-  bytes serializedAst = 2;
-  google.protobuf.BoolValue isAggregation = 3;
-}
-
 message Sort {
   enum SortOrder {
     SORT_ORDER_UNSPECIFIED = 0;

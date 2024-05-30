@@ -6,7 +6,6 @@ import "google/protobuf/wrappers.proto";
 import "com/coralogix/tracing/v1/trace_graph.proto";
 import "com/coralogix/tracing/v1/common.proto";
 import "com/coralogix/tracing/v1/span_graph.proto";
-import "com/coralogix/tracing/v1/span_query.proto";
 
 package com.coralogix.tracing.v1;
 
@@ -42,6 +41,12 @@ message MetadataFilter {
     MetadataFilterFieldName metadata_field = 1;
     repeated google.protobuf.StringValue values = 2;
     ValueFilters value_filters = 3;
+}
+
+message DataprimeQuery {
+    google.protobuf.StringValue queryString = 1;
+    bytes serializedAst = 2;
+    google.protobuf.BoolValue isAggregation = 3;
 }
 
 message TagFilter {
