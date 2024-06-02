@@ -25,7 +25,7 @@ message GetSpansRequest {
 
 message GetSpansResponse {
   repeated Span spans = 1;
-  repeated RawDataPrimeResult raw_dataprime_result = 2;
+  repeated RawDataPrimeResult raw_dataprime_results = 2;
 }
 
 message GetSpanCountRequest {
