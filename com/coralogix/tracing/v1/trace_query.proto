@@ -45,7 +45,7 @@ message MetadataFilter {
 
 message DataprimeQuery {
     google.protobuf.StringValue queryString = 1;
-    bytes serializedAst = 2;
+    google.protobuf.StringValue base64Ast = 2;
     google.protobuf.BoolValue isAggregation = 3;
 }
 
