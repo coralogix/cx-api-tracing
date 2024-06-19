@@ -40,6 +40,7 @@ message SpanQueryDefinition {
   google.protobuf.StringValue lucene_query = 12;
   SpansFetchParameters spans_fetch_parameters = 13;
   google.protobuf.BoolValue only_root_spans = 14;
+  DataprimeQuery dataprime_query = 15;
 }
 
 message SpansFetchParameters {
