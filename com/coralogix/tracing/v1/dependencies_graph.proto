@@ -12,6 +12,7 @@ message ServiceDetails {
 message DatabaseDetails {
   google.protobuf.StringValue db_system = 1;
   google.protobuf.StringValue db_name = 2;
+  google.protobuf.StringValue db_name_src = 3;
 }
 
 message S3Details {
