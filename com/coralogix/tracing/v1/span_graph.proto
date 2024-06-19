@@ -5,19 +5,20 @@ import "com/coralogix/tracing/v1/common.proto";
 
 package com.coralogix.tracing.v1;
 
-message SpanGraphDescriptor {
-  message TimeSeriesGraph {
-    google.protobuf.Int32Value bucket_size_millis = 1;
-  }
-  message GaugeGraph {}
+message TimeSeriesGraph {
+  google.protobuf.Int32Value bucket_size_millis = 1;
+}
+message GaugeGraph {}
 
-  message GroupByField {
-    oneof field {
-      MetadataFilterFieldName metadata_field = 1;
-      google.protobuf.StringValue tag_name = 2;
-      google.protobuf.StringValue process_tag = 3;
-    }
+message GroupByField {
+  oneof field {
+    MetadataFilterFieldName metadata_field = 1;
+    google.protobuf.StringValue tag_name = 2;
+    google.protobuf.StringValue process_tag = 3;
   }
+}
+
+message SpanGraphDescriptor {
   oneof aggregation {
     MetricAggregation metric_aggregation = 1;
     DimensionAggregation dimension_aggregation = 2;
