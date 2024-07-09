@@ -5,6 +5,7 @@ import "com/coralogix/tracing/v1/span.proto";
 import "com/coralogix/tracing/v1/span_query.proto";
 import "com/coralogix/tracing/v1/trace_query.proto";
 import "com/coralogix/tracing/v1/span_graph.proto";
+import "com/coralogix/tracing/v1/common.proto";
 
 package com.coralogix.tracing.v1;
 
@@ -24,6 +25,7 @@ message GetSpansRequest {
 
 message GetSpansResponse {
   repeated Span spans = 1;
+  repeated RawDataPrimeResult raw_dataprime_results = 2;
 }
 
 message GetSpanCountRequest {
@@ -55,6 +57,12 @@ message GetSpanGraphRequest {
 message GetSpanGraphResponse {
   SpanGraphResult graph = 1;
   google.protobuf.Int64Value graph_id = 2;
+}
+
+message RawDataPrimeResult {
+  repeated KeyValue labels = 1;
+  repeated KeyValue metadata = 2;
+  string data = 3;
 }
 
 message GetFullSpanDataRequest {
