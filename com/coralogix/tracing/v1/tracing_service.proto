@@ -171,6 +171,14 @@ message GetSpansReferencesResponse {
     repeated ReferenceTo references_to = 2;
 }
 
+message GetTraceSummaryRequest {
+    google.protobuf.StringValue trace_data = 1;
+}
+
+message GetTraceSummaryResponse {
+    google.protobuf.StringValue trace_summary = 1;
+}
+
 service TracingService {
     rpc GetTrace(GetTraceRequest) returns (GetTraceResponse) {
         option (audit_log_description).description = "get trace";
@@ -227,5 +235,9 @@ service TracingService {
 
     rpc GetSpansReferences(GetSpansReferencesRequest) returns (GetSpansReferencesResponse) {
         option (audit_log_description).description = "get spans references";
+    }
+
+    rpc GetTraceSummary(GetTraceSummaryRequest) returns (GetTraceSummaryResponse) {
+      option (audit_log_description).description = "get trace summary";
     }
 }
