@@ -237,7 +237,5 @@ service TracingService {
         option (audit_log_description).description = "get spans references";
     }
 
-    rpc GetTraceSummary(GetTraceSummaryRequest) returns (GetTraceSummaryResponse) {
-      option (audit_log_description).description = "get trace summary";
-    }
+    rpc GetTraceSummary(GetTraceSummaryRequest) returns (GetTraceSummaryResponse) { }
 }
