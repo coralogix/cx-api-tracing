@@ -19,4 +19,6 @@ message Trace {
     google.protobuf.Int32Value company_id = 13;
     google.protobuf.BoolValue too_many_spans = 14;
     Span root_span = 15;
+    // Relevant only for results returned from archive
+    repeated string record_locations = 16;
 }
