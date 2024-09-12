@@ -37,5 +37,5 @@ message Span {
     google.protobuf.StringValue subsystem_name = 14;
     repeated Reference references = 15;
     // Relevant only for results returned from archive
-    string record_location = 16;
+    optional string record_location = 16;
 }
